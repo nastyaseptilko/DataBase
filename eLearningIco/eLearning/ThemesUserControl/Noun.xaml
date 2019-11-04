@@ -1,0 +1,183 @@
+﻿<UserControl x:Class="eLearning.ThemesUserControl.Noun"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eLearning.ThemesUserControl"
+        mc:Ignorable="d"
+        Width="700">
+    <ScrollViewer>
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#ac86e8" Offset="2"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="50"/>
+                
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="50"/>
+                
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Множественное число существительных" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="10 0"/>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="в английском языке" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="10 0"/>
+
+            <TextBlock Grid.Row="2" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+                Существительные в английском языке, как и в русском, могут стоять в форме единственного или множественного числа.
+            </TextBlock>
+
+            <TextBlock Grid.Row="3" FontSize="18" Margin="10 0">
+                <Run FontWeight="DemiBold">Единственное число</Run> (singular) обозначает один предмет:
+            </TextBlock>
+
+            <Border Grid.Row="4" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                cup – <Run Foreground="Gray">чашка</Run>, 
+                gun – <Run Foreground="Gray">пушка</Run>,
+                bubble – <Run Foreground="Gray">пузырёк</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="5" FontSize="18" Margin="10 0">
+                <Run FontWeight="DemiBold">Множественное число</Run> (plural) обозначает два и более предмета:
+            </TextBlock>
+
+            <Border Grid.Row="6" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                three cups – <Run Foreground="Gray">три чашки</Run>, 
+                two guns – <Run Foreground="Gray">две пушки</Run>,
+                thousands of bubbles – <Run Foreground="Gray">тысячи пузырьков</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="7" FontSize="18" Margin="10 0">
+                <Run FontWeight="Bold">Образование множественного числа английских существительных</Run>
+            </TextBlock>
+
+            <TextBlock Grid.Row="8" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+               Английское существительное можно поставить во множественное число, прибавив 
+                к нему окончание <Run FontWeight="DemiBold">-s</Run>. Оно читается как 
+                <Run FontWeight="DemiBold">[ z ]</Run> после гласных и звонких согласных:</TextBlock>
+
+            <Border Grid.Row="9" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                shoe – shoe<Run FontWeight="DemiBold">s</Run>, 
+                hen – hen<Run FontWeight="DemiBold">s</Run>.
+                </TextBlock>
+            </Border>
+            
+            <TextBlock Grid.Row="10" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+               или как <Run FontWeight="DemiBold">[ s ]</Run>  после глухих согласных:
+            </TextBlock>
+
+            <Border Grid.Row="11" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                bat – bat<Run FontWeight="DemiBold">s</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="12" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+               Если существительное оканчивается на свистящий или шипящий звук,
+                то есть на буквы <Run FontWeight="DemiBold">s, ss, x, sh, ch,</Run>
+                то для него форма множественного числа образуется при помощи окончания 
+                <Run FontWeight="DemiBold">-es [ iz ]</Run>:
+            </TextBlock>
+            
+            <Border Grid.Row="13" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                bass – bass<Run FontWeight="DemiBold">es</Run>, 
+                match – match<Run FontWeight="DemiBold">es</Run>,
+                box – box<Run FontWeight="DemiBold">es</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="14" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+               Если существительное оканчивается на букву  <Run FontWeight="DemiBold">-y</Run>, перед которой стоит 
+                согласная, то во множественном числе <Run FontWeight="DemiBold">-y</Run> меняется на <Run FontWeight="DemiBold">i</Run> и к слову 
+                прибавляется окончание <Run FontWeight="DemiBold">-es</Run>:
+            </TextBlock>
+
+            <Border Grid.Row="15" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                lobb<Run FontWeight="DemiBold">y</Run> – lobb<Run FontWeight="DemiBold">ies</Run>,      
+                sk<Run FontWeight="DemiBold">y</Run> – sk<Run FontWeight="DemiBold">ies</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="16" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+               Если перед буквой <Run FontWeight="DemiBold">-y</Run> стоит гласная, то множественное число 
+                образуется по общему правилу при помощи окончания <Run FontWeight="DemiBold">-s</Run>, 
+                а буква <Run FontWeight="DemiBold">y</Run> остается без изменений:                
+            </TextBlock>
+
+            <Border Grid.Row="17" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                bay – bay<Run FontWeight="DemiBold">s</Run>,      
+                day – day<Run FontWeight="DemiBold">s</Run>,
+                way – way<Run FontWeight="DemiBold">s</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="18" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+              К существительным заканчивающимся на <Run FontWeight="DemiBold">-o</Run> 
+                прибавляется окончание <Run FontWeight="DemiBold">-es</Run>:
+            </TextBlock>
+
+            <Border Grid.Row="19" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                potat<Run FontWeight="DemiBold">o</Run> – potato<Run FontWeight="DemiBold">es</Run>,      
+                tomat<Run FontWeight="DemiBold">o</Run> – tomato<Run FontWeight="DemiBold">es</Run>,
+                her<Run FontWeight="DemiBold">o</Run> – hero<Run FontWeight="DemiBold">es</Run>.
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="20" Margin="10 0 0 0" FontSize="18" TextWrapping="Wrap">
+              Если же существительное оканчивается на буквы <Run FontWeight="DemiBold">-f</Run>
+                или  <Run FontWeight="DemiBold">-fe</Run>, то во множественном
+                числе они меняются на  <Run FontWeight="DemiBold">-v-</Run> и 
+                прибавляется окончание  <Run FontWeight="DemiBold">-es</Run>:
+            </TextBlock>
+
+            <Border Grid.Row="21" Background="White" UseLayoutRounding="True" CornerRadius="20" Margin="40 7">
+                <TextBlock VerticalAlignment="Center" Margin="30 0" FontSize="18">
+                thie<Run FontWeight="DemiBold">f</Run> – thie<Run FontWeight="DemiBold">ves</Run>,      
+                wol<Run FontWeight="DemiBold">f</Run> – wol<Run FontWeight="DemiBold">ves</Run>,
+                hal<Run FontWeight="DemiBold">f</Run> – hal<Run FontWeight="DemiBold">ves</Run>,
+                wi<Run FontWeight="DemiBold">fe</Run> – wi<Run FontWeight="DemiBold">ves</Run>.
+                </TextBlock>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

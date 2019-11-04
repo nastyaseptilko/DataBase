@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="eLearning.UserControls.Themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:eLearning.UserControls"
+             mc:Ignorable="d" 
+             Width="700">
+
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel Orientation="Vertical" Height="1100" HorizontalAlignment="Center" >
+            <Grid x:Name="Theme1" Height="250" Width="650" Margin="8" MouseDown="Theme1_MouseDown" Cursor="Hand">
+                <Grid.Background>
+                    <ImageBrush ImageSource="../Images/1.jpg"/>
+                </Grid.Background>
+                <TextBlock Text="Времена" Foreground="DarkBlue" FontFamily="Edrima" FontSize="30" VerticalAlignment="Bottom" Margin="15 0 0 10"/>
+            </Grid>
+
+
+            <Grid x:Name="Theme2" Height="250" Width="650"  Margin="8" MouseDown="Theme2_MouseDown" Cursor="Hand">
+                <Grid.Background>
+                    <ImageBrush ImageSource="../Images\2.jpg"/>
+                </Grid.Background>
+                <TextBlock Text="Артикли" Foreground="DarkBlue" FontFamily="Edrima" FontSize="30" VerticalAlignment="Bottom" Margin="15 0 0 10"/>
+            </Grid>
+
+            <Grid x:Name="Theme3" Height="250" Width="650"  Margin="8" MouseDown="Theme3_MouseDown" Cursor="Hand">
+                <Grid.Background>
+                    <ImageBrush ImageSource="../Images\3.jpg"/>
+                </Grid.Background>
+                <TextBlock Text="Существительные" Foreground="DarkBlue" FontFamily="Edrima" FontSize="30" VerticalAlignment="Bottom" Margin="15 0 0 10"/>
+            </Grid>
+
+            <Grid x:Name="Theme4" Height="250" Width="650"  Margin="8" MouseDown="Theme4_MouseDown" Cursor="Hand">
+                <Grid.Background>
+                    <ImageBrush ImageSource="../Images\4.jpg"/>
+                </Grid.Background>
+                <TextBlock Text="Прилагательные" Foreground="DarkBlue" FontFamily="Edrima" FontSize="30" VerticalAlignment="Bottom" Margin="15 0 0 10"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

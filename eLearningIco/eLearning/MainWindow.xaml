@@ -1,0 +1,42 @@
+﻿<Window x:Class="eLearning.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="660" Width="700" ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"  WindowStyle="ToolWindow">
+
+    <StackPanel >
+        <TextBox x:Name="tex" Text="{Binding ElementName=tex2 , Path=Text}" />
+        <TextBox x:Name="tex2" Text="{Binding ElementName=tex , Path=Text}" />
+        <Grid Height="30">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+                <Button Content="Выйти из аккаунта" Background=" #e6e8ed" BorderBrush="#FFA2A2A2"  Foreground="#FFA2A2A2" FontSize="13" HorizontalAlignment="Left"  Click="exitUser_Click" Height="Auto"  Width="195" />
+                <!--<Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="closeForm_Click" Margin="0,-5,0,-4.6">
+                    <materialDesign:PackIcon Kind="Close" Foreground="#FFA2A2A2" Width="25" Height="25"/>
+                </Button>-->
+
+                <Button x:Name="closeForm" VerticalAlignment="Top" Width="66" Height="29"  Background="#e6e8ed" BorderBrush="#FFA2A2A2" Click="closeForm_Click" Margin="0,0,0,-2">
+                    <materialDesign:PackIcon Kind="Power" Foreground="Black" Height="22" Width="26"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="50 0 50 0">
+                <Button x:Name="btnTheme" Uid="0" Width="150" Content="Темы" Height="50" Background="#efefef" BorderBrush="{x:Null}" Foreground="DarkBlue" FontSize="20" Click="Button_Click"/>
+                <Button x:Name="btnTest" Uid="1" Width="150" Content="Тесты" Height="50" Background="#efefef" BorderBrush="{x:Null}" Foreground="DarkBlue" FontSize="20" Click="Button_Click"/>
+                <Button x:Name="btnAchievements" Uid="2" Width="150" Content="Достижения" Height="50" Background="#efefef" BorderBrush="{x:Null}" Foreground="DarkBlue" FontSize="20" Click="Button_Click"/>
+                <Button x:Name="btnDictionary" Uid="3" Width="150" Content="Словарь" Height="50" Background="#efefef" BorderBrush="{x:Null}" Foreground="DarkBlue" FontSize="20" Click="Button_Click"/>
+            </StackPanel>
+
+
+            <Grid x:Name="GridCursor" Width="150" Height="5" Background="#717171" HorizontalAlignment="Left" Margin="50 -500 0 0"/>
+            <Grid x:Name="GridMain" Height="550" Margin="0 50 0 0" Background="White"/>
+
+            
+        </Grid>
+    </StackPanel>
+</Window>

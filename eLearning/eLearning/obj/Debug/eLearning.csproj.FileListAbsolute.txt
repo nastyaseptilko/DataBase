@@ -1,3 +1,0 @@
-D:\Учёба\3 curs\DB\КП\eLearning\eLearning\obj\Debug\eLearning.csprojAssemblyReference.cache
-D:\Учёба\3 curs\DB\КП\eLearning\eLearning\obj\Debug\App.g.cs
-D:\Учёба\3 curs\DB\КП\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.cache

@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="eLearning.UserControls.Topics"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:eLearning.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
+             mc:Ignorable="d" 
+             Width="700">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="stkP">
+                                
+            </StackPanel>
+            
+            
+        </ScrollViewer>       
+    </Grid>
+        
+        <!--<StackPanel x:Name="stkP">
+            
+        </StackPanel>
+
+    <Expander x:Name="expTestGrammar" Header="Тест по грамматике" Foreground="White">
+        <ListView x:Name="listTestGrammar">
+
+        </ListView>
+    </Expander>
+    <StackPanel>
+
+            <Grid Background="#FF9CF787" Height="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/PDV(2018);component/Images/Тест1.png"/>
+
+                <Expander x:Name="extTestGrammar" Grid.Column="1" Header="Тесты по грамматике" Background="#FF9CF787" Foreground="White" FontWeight="Bold">
+                    <ScrollViewer Height="100">
+                        <ListView x:Name="listTestGrammar" SelectionChanged="testGrammar_SelectionChanged">
+
+                        </ListView>
+                    </ScrollViewer>
+                </Expander>
+            </Grid>
+
+            <Grid Background="#FFF3FF00" Height="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/PDV(2018);component/Images/Тест2.png"/>
+
+                <Expander x:Name="extTestLogics" Grid.Column="1" Header="Тесты по логике" Background="#FFF3FF00" FontWeight="Bold" Foreground="White">
+                    <ListView x:Name="listTestLogics" SelectionChanged="testLogics_SelectionChanged">
+                    </ListView>
+                </Expander>
+            </Grid>
+
+            <Grid Background="#FF00F3FF" Height="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/PDV(2018);component/Images/Тест3.png" />
+
+                <Expander x:Name="extTestPronoun" Grid.Column="1" Header="Тесты по местоимениям" Foreground="White" Background="#FF00F3FF" FontWeight="Bold">
+                    <ListView x:Name="listTestPronoun" SelectionChanged="testЗronoun_SelectionChanged">
+                    </ListView>
+                </Expander>
+            </Grid>
+
+            <Grid Background="LightPink" Height="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/PDV(2018);component/Images/Тест4.png" />
+                <Expander Grid.Column="1" x:Name="extTestAdjective" Header="Тесты по прилагательным" Foreground="White" Background="LightPink" FontWeight="Bold">
+                    <ListView x:Name="listTestАdjective" SelectionChanged="testАdjective_SelectionChanged">
+                    </ListView>
+                </Expander>
+            </Grid>
+        </StackPanel>-->
+   
+</UserControl>

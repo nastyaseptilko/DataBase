@@ -1,0 +1,430 @@
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\MainWindow.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\MainWindow.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Progress.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Themes.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Topics.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\App.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\Windows\Login.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\Windows\Registraition.g.cs
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\eLearning.exe.config
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\eLearning.exe
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\eLearning.pdb
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\CommonServiceLocator.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\MaterialDesignColors.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\XAct.Core.PCL.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\ASUS\Downloads\eLearning\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Dictionary.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Progress.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Themes.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\UserControls\Topics.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\Windows\Login.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\Windows\Registraition.baml
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.g.resources
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.exe
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\eLearning.pdb
+C:\Users\ASUS\Downloads\eLearning\eLearning\obj\Debug\App.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\eLearning.exe.config
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\eLearning.exe
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\eLearning.pdb
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\CommonServiceLocator.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\MaterialDesignColors.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\XAct.Core.PCL.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.csprojResolveAssemblyReference.cache
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\MainWindow.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\MainWindow.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Progress.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Themes.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Topics.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\Windows\Login.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\Windows\Registraition.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\App.g.cs
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\App.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Dictionary.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Progress.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Themes.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\UserControls\Topics.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\Windows\Login.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\Windows\Registraition.baml
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.g.resources
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.exe
+D:\Учёба\2 курс\2 сем\eLearning\eLearning\obj\Debug\eLearning.pdb
+D:\Настя\eLearning\eLearning\bin\Debug\eLearning.exe.config
+D:\Настя\eLearning\eLearning\bin\Debug\eLearning.exe
+D:\Настя\eLearning\eLearning\bin\Debug\eLearning.pdb
+D:\Настя\eLearning\eLearning\bin\Debug\CommonServiceLocator.dll
+D:\Настя\eLearning\eLearning\bin\Debug\MaterialDesignColors.dll
+D:\Настя\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Настя\eLearning\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+D:\Настя\eLearning\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+D:\Настя\eLearning\eLearning\bin\Debug\XAct.Core.PCL.dll
+D:\Настя\eLearning\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+D:\Настя\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Настя\eLearning\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Настя\eLearning\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+D:\Настя\eLearning\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+D:\Настя\eLearning\eLearning\obj\Debug\MainWindow.baml
+D:\Настя\eLearning\eLearning\obj\Debug\MainWindow.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Progress.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Themes.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Topics.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\Windows\Login.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\Windows\Registraition.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\App.g.cs
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+D:\Настя\eLearning\eLearning\obj\Debug\App.baml
+D:\Настя\eLearning\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+D:\Настя\eLearning\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+D:\Настя\eLearning\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Dictionary.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Progress.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Themes.baml
+D:\Настя\eLearning\eLearning\obj\Debug\UserControls\Topics.baml
+D:\Настя\eLearning\eLearning\obj\Debug\Windows\Login.baml
+D:\Настя\eLearning\eLearning\obj\Debug\Windows\Registraition.baml
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.g.resources
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.exe
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.pdb
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.csprojAssemblyReference.cache
+D:\Настя\eLearning копия\eLearning\bin\Debug\eLearning.exe.config
+D:\Настя\eLearning копия\eLearning\bin\Debug\eLearning.exe
+D:\Настя\eLearning копия\eLearning\bin\Debug\eLearning.pdb
+D:\Настя\eLearning копия\eLearning\bin\Debug\CommonServiceLocator.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\MaterialDesignColors.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\XAct.Core.PCL.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+D:\Настя\eLearning копия\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Настя\eLearning копия\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Настя\eLearning копия\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+D:\Настя\eLearning копия\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.csprojAssemblyReference.cache
+D:\Настя\eLearning копия\eLearning\obj\Debug\MainWindow.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\MainWindow.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Progress.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Themes.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Topics.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\Windows\Login.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\Windows\Registraition.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\App.g.cs
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+D:\Настя\eLearning копия\eLearning\obj\Debug\App.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Dictionary.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Progress.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Themes.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\UserControls\Topics.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\Windows\Login.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\Windows\Registraition.baml
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.g.resources
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.exe
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.pdb
+D:\Настя\eLearning копия\eLearning\bin\Debug\eLearning.exe.manifest
+D:\Настя\eLearning копия\eLearning\bin\Debug\eLearning.application
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.TrustInfo.xml
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.exe.manifest
+D:\Настя\eLearning копия\eLearning\obj\Debug\eLearning.application
+D:\Настя\eLearning\eLearning\bin\Debug\eLearning.exe.manifest
+D:\Настя\eLearning\eLearning\bin\Debug\eLearning.application
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.TrustInfo.xml
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.exe.manifest
+D:\Настя\eLearning\eLearning\obj\Debug\eLearning.application
+D:\Настя\eLearningIco\eLearning\bin\Debug\eLearning.exe.config
+D:\Настя\eLearningIco\eLearning\bin\Debug\eLearning.exe.manifest
+D:\Настя\eLearningIco\eLearning\bin\Debug\eLearning.application
+D:\Настя\eLearningIco\eLearning\bin\Debug\eLearning.exe
+D:\Настя\eLearningIco\eLearning\bin\Debug\eLearning.pdb
+D:\Настя\eLearningIco\eLearning\bin\Debug\CommonServiceLocator.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\MaterialDesignColors.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\XAct.Core.PCL.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+D:\Настя\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Настя\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Настя\eLearningIco\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+D:\Настя\eLearningIco\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.csprojAssemblyReference.cache
+D:\Настя\eLearningIco\eLearning\obj\Debug\MainWindow.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\MainWindow.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Progress.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Themes.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Topics.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\Windows\Login.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\Windows\Registraition.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\App.g.cs
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+D:\Настя\eLearningIco\eLearning\obj\Debug\App.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Dictionary.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Progress.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Themes.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\UserControls\Topics.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\Windows\Login.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\Windows\Registraition.baml
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.g.resources
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.TrustInfo.xml
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.exe.manifest
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.application
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.exe
+D:\Настя\eLearningIco\eLearning\obj\Debug\eLearning.pdb
+G:\eLearningIco\eLearning\bin\Debug\eLearning.exe.config
+G:\eLearningIco\eLearning\bin\Debug\eLearning.exe.manifest
+G:\eLearningIco\eLearning\bin\Debug\eLearning.application
+G:\eLearningIco\eLearning\bin\Debug\eLearning.exe
+G:\eLearningIco\eLearning\bin\Debug\eLearning.pdb
+G:\eLearningIco\eLearning\bin\Debug\CommonServiceLocator.dll
+G:\eLearningIco\eLearning\bin\Debug\MaterialDesignColors.dll
+G:\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+G:\eLearningIco\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+G:\eLearningIco\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+G:\eLearningIco\eLearning\bin\Debug\XAct.Core.PCL.dll
+G:\eLearningIco\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+G:\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+G:\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+G:\eLearningIco\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+G:\eLearningIco\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+G:\eLearningIco\eLearning\obj\Debug\eLearning.csprojResolveAssemblyReference.cache
+G:\eLearningIco\eLearning\obj\Debug\MainWindow.baml
+G:\eLearningIco\eLearning\obj\Debug\MainWindow.g.cs
+G:\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+G:\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Progress.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Themes.g.cs
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Topics.g.cs
+G:\eLearningIco\eLearning\obj\Debug\Windows\Login.g.cs
+G:\eLearningIco\eLearning\obj\Debug\Windows\Registraition.g.cs
+G:\eLearningIco\eLearning\obj\Debug\App.g.cs
+G:\eLearningIco\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+G:\eLearningIco\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+G:\eLearningIco\eLearning\obj\Debug\App.baml
+G:\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+G:\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+G:\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+G:\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+G:\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+G:\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Dictionary.baml
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Progress.baml
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Themes.baml
+G:\eLearningIco\eLearning\obj\Debug\UserControls\Topics.baml
+G:\eLearningIco\eLearning\obj\Debug\Windows\Login.baml
+G:\eLearningIco\eLearning\obj\Debug\Windows\Registraition.baml
+G:\eLearningIco\eLearning\obj\Debug\eLearning.g.resources
+G:\eLearningIco\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+G:\eLearningIco\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+G:\eLearningIco\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+G:\eLearningIco\eLearning\obj\Debug\eLearning.TrustInfo.xml
+G:\eLearningIco\eLearning\obj\Debug\eLearning.exe.manifest
+G:\eLearningIco\eLearning\obj\Debug\eLearning.application
+G:\eLearningIco\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+G:\eLearningIco\eLearning\obj\Debug\eLearning.exe
+G:\eLearningIco\eLearning\obj\Debug\eLearning.pdb
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\eLearning.exe.config
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\eLearning.exe.manifest
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\eLearning.application
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\eLearning.exe
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\eLearning.pdb
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\CommonServiceLocator.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\MaterialDesignColors.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\System.Net.Http.Extensions.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\System.Net.Http.Primitives.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\XAct.Core.PCL.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\XAct.Diagrams.Uml.PlantUml.dll
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\System.Net.Http.Extensions.xml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\bin\Debug\System.Net.Http.Primitives.xml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.csprojAssemblyReference.cache
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\MainWindow.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\MainWindow.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestArticles.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestDictionary.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Adjectives.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Articles.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Noun.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Tences.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\Information.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Dictionary.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Progress.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Themes.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Topics.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\Windows\Login.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\Windows\Registraition.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\App.g.cs
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning_MarkupCompile.cache
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning_MarkupCompile.lref
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\App.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestArticles.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\TestsUserControl\TestDictionary.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Adjectives.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Articles.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Noun.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\ThemesUserControl\Tences.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\CreatorTests.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\DialogWindow.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserContolsForAdmin\Information.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Dictionary.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Progress.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Themes.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\UserControls\Topics.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\Windows\Login.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\Windows\Registraition.baml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.g.resources
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.Properties.Resources.resources
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.csproj.GenerateResource.cache
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.csproj.CoreCompileInputs.cache
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.TrustInfo.xml
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.exe.manifest
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.application
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.csproj.CopyComplete
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.exe
+D:\Учёба\2 курс\2 сем\eLearningIco\eLearning\obj\Debug\eLearning.pdb
