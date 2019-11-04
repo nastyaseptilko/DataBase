@@ -176,6 +176,7 @@ EXEC Add_QUESTIONS;
 
 
 GO
+--б йНДЕ 3 ХМЯЕПРЮ 
 CREATE PROCEDURE Add_ANSWER AS 
 INSERT INTO ANSWERS_FOR_TESTS([Answer], [Is_Right], [Question_Id]) VALUES ('{listAnswerInDB[0].SomeAnswer}', 1, {question.IdQuestion});
 EXEC Add_ANSWER;
@@ -188,3 +189,94 @@ SELECT QUESTIONS_FOR_TESTS.Question FROM QUESTIONS_FOR_TESTS
                                         JOIN TESTS ON QUESTIONS_FOR_TESTS.Test_Id = TESTS.Test_Id
                                         WHERE TESTS.Name_Test = '{listTests.SelectedItem}';
 EXEC CREATE_QUESTION;
+
+
+
+GO
+CREATE PROCEDURE GET_INFORMATION AS
+SELECT THEMES_FOR_TESTS.Name_Theme, TESTS.Name_Test, QUESTIONS_FOR_TESTS.Question FROM THEMES_FOR_TESTS
+JOIN TESTS ON THEMES_FOR_TESTS.Theme_Id = TESTS.Theme_Id
+JOIN QUESTIONS_FOR_TESTS ON TESTS.Test_Id = QUESTIONS_FOR_TESTS.Test_Id
+EXEC GET_INFORMATION;
+
+
+GO
+CREATE PROCEDURE DELETE_QUESTIONS AS
+DELETE FROM QUESTIONS_FOR_TESTS WHERE Question = '{questionName}';
+EXEC DELETE_QUESTIONS;
+ --$"DELETE a FROM Answer a INNER JOIN " +
+ --                               $"Questions q ON a.IdQuestion = q.IdQuestion " +
+ --                               $"WHERE q.Question = '{questionName}'", sqlConnection);
+ --                           command.ExecuteNonQuery();
+
+
+ GO
+ CREATE PROCEDURE TEST_ARTICLES_TESTS AS
+ SELECT TESTS.Name_Test, QUESTIONS_FOR_TESTS.Question_Id, QUESTIONS_FOR_TESTS.Number_Question, QUESTIONS_FOR_TESTS.Question FROM QUESTIONS_FOR_TESTS
+            join TESTS ON QUESTIONS_FOR_TESTS.Test_Id = TESTS.Test_Id
+            where TESTS.Test_Id = {test.idTest};
+EXEC TEST_ARTICLES_TESTS;
+
+
+GO
+CREATE PROCEDURE TEST_ARTICLES_ANSWERS AS
+ SELECT ANSWERS_FOR_TESTS.Answer FROM ANSWERS_FOR_TESTS
+                                               JOIN QUESTIONS_FOR_TESTS on ANSWERS_FOR_TESTS.Question_Id = QUESTIONS_FOR_TESTS.Question_Id
+                                                where QUESTIONS_FOR_TESTS.Question = '{createTests[i].Question}';
+EXEC TEST_ARTICLES_ANSWERS;
+
+
+
+GO 
+CREATE PROCEDURE TEST_ARTICLES_QUESTIONS AS
+SELECT QUESTIONS_FOR_TESTS.Number_Question, QUESTIONS_FOR_TESTS.Question, ANSWERS_FOR_TESTS.Answer FROM QUESTIONS_FOR_TESTS
+        JOIN ANSWERS_FOR_TESTS ON QUESTIONS_FOR_TESTS.Question_Id = ANSWERS_FOR_TESTS.Question_Id
+        JOIN TESTS ON QUESTIONS_FOR_TESTS.Test_Id = TESTS.Test_Id
+        WHERE ANSWERS_FOR_TESTS.Is_Right = 1 AND TESTS.Name_Test = '{txbNameTest.Text}'
+EXEC TEST_ARTICLES_QUESTIONS;
+
+
+GO
+--реяр опнидем
+CREATE PROCEDURE ADD_PROGRESS_FOR_TESTS AS
+INSERT INTO PROPROGRESS_FOR_TEST(User_Id, Test_Id, Name_Test, Date_Test, Is_Right, Count_Right_Answer) 
+VALUES ({user.idUser}, {test.idTest}, '{test.Name}', '{DateTime.Now}', 1, {countRightAnswer});
+EXEC ADD_PROGRESS_FOR_TESTS;
+
+
+GO
+--реяр ме опнидем
+CREATE PROCEDURE NO_ADD_PROGRESS_FOR_TESTS  AS
+INSERT INTO PROGRESS_PROGRESS_FOR_TEST(User_Id, Test_Id, Name_Test, Date_Test, Is_Right, Count_Right_Answer) 
+VALUES ({user.idUser}, {test.idTest}, '{test.Name}', '{DateTime.Now}', 0, {countRightAnswer});
+EXEC NO_ADD_PROGRESS_FOR_TESTS;
+
+
+GO 
+--рср нм аепер хг ад, ю лме мюдн врнаш лш гюохяшбюкх 
+CREATE PROCEDURE TEST_DICTIONARY AS
+SELECT Words.IdWord, Words.EnglishWord, Words.RussianWord
+                FROM Words
+                JOIN PodThemes ON Words.IdTheme = PodThemes.IdTheme
+                LEFT JOIN ThemesForDictionary ON ThemesForDictionary.IdTheme = PodThemes.IdTheme
+                WHERE NameTheme = '{txbNameTest.Text}' 
+
+EXEC TEST_DICTIONARY;
+
+
+GO
+--реяр опнидем он якнбюпч
+CREATE PROCEDURE ADD_PROGRESS_FOR_DICTIONARY AS
+INSERT INTO PROGRESS_FOR_DICTIONARY(User_Id, Test_Id, Name_Test, Date_Test, Is_Right, Count_Right_Answer)
+                        VALUES ({user.idUser}, '{txbNameTest.Text}', '{DateTime.Now}', {flagWinTest}, {countRightAnswer}, {dictionaries.Count - 2});
+EXEC ADD_PROGRESS_FOR_DICTIONARY;
+
+
+GO
+--реяр ме опнидем он якнбюпч
+CREATE PROCEDURE NO_ADD_PROGRESS_FOR_DICTIONARY AS
+ INSERT INTO PROGRESS_FOR_DICTIONARY(User_Id, Test_Id, Name_Test, Date_Test, Is_Right, Count_Right_Answer)
+                        VALUES ({user.idUser}, '{txbNameTest.Text}', '{DateTime.Now}', {flagWinTest}, {countRightAnswer}, {dictionaries.Count - 2});
+EXEC NO_ADD_PROGRESS_FOR_DICTIONARY;
+
+
