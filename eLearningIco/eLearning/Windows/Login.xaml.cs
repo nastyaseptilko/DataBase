@@ -53,7 +53,7 @@ namespace eLearning.Windows
             }
 
             string connectionString = DataBase.data;
-            string sqlExpression = "SELECT * FROM USERS";
+            string getUsersProcedure = "GET_USERS";     // название хранимой процедуры
 
             try
             {
@@ -63,7 +63,12 @@ namespace eLearning.Windows
 
                     if (txbLogin.Text != string.Empty)
                     {
-                        SqlCommand sqlCommand = new SqlCommand(sqlExpression, sqlConnection);
+                        // В параметре название процедуры и экземпляр коннекшна
+                        SqlCommand sqlCommand = new SqlCommand(getUsersProcedure, sqlConnection);
+
+                        // Тип выполняемой команды
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
                         SqlDataReader reader = sqlCommand.ExecuteReader();
 
                         Classes.User tempUser = new Classes.User();

@@ -8,8 +8,6 @@
         WindowStartupLocation="CenterScreen"  WindowStyle="ToolWindow">
 
     <StackPanel >
-        <TextBox x:Name="tex" Text="{Binding ElementName=tex2 , Path=Text}" />
-        <TextBox x:Name="tex2" Text="{Binding ElementName=tex , Path=Text}" />
         <Grid Height="30">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
                 <Button Content="Выйти из аккаунта" Background=" #e6e8ed" BorderBrush="#FFA2A2A2"  Foreground="#FFA2A2A2" FontSize="13" HorizontalAlignment="Left"  Click="exitUser_Click" Height="Auto"  Width="195" />

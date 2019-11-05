@@ -94,28 +94,38 @@ CREATE TABLE WORDS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE eLEARNING;
-GO
-CREATE PROCEDURE Get_USERS AS
-SELECT * FROM USERS
-EXEC Get_USERS;
-
-
 
 GO
-CREATE PROCEDURE Add_USERS AS
-INSERT INTO USERS([Login], [Password]) VALUES ('{txbLogin.Text}', '{txbPassword1.Password}')
-SELECT * FROM USERS
-EXEC Add_USERS;
+---
+CREATE PROCEDURE GET_USERS AS
+	SELECT * FROM USERS
+---
+
+EXEC GET_USERS;
+
+GO
+CREATE PROCEDURE ADD_USERS
+				@login NVARCHAR(30),
+				@password NVARCHAR(15)
+AS
+BEGIN
+	INSERT INTO USERS([Login], [Password]) VALUES (@login, @password);
+END
+EXEC ADD_USERS 'qwd', 'qwd';
 
 
 GO
-CREATE PROCEDURE NO_PASSED_FOR_TEST AS
+CREATE PROCEDURE NO_PASSED_FOR_TEST 
+			@user_Id int
+AS
+BEGIN
 --ме опнидеммше реярш
- SELECT THEMES_FOR_TESTS.Name_Theme, PROGRESS_FOR_TEST.Test_Id, PROGRESS_FOR_TEST.Date_Test, PROGRESS_FOR_TEST.Count_Right_Answers
-            FROM PROGRESS_FOR_TEST
-            JOIN TESTS ON PROGRESS_FOR_TEST.Test_Id = TESTS.Test_Id
-            JOIN THEMES_FOR_TESTS ON TESTS.Theme_Id = THEMES_FOR_TESTS.Theme_Id
-            WHERE PROGRESS_FOR_TEST.Is_Right = 1 AND User_Id = {user.idUser};
+	SELECT THEMES_FOR_TESTS.Name_Theme, PROGRESS_FOR_TEST.Test_Id, PROGRESS_FOR_TEST.Date_Test, PROGRESS_FOR_TEST.Count_Right_Answers
+		FROM PROGRESS_FOR_TEST
+				JOIN TESTS ON PROGRESS_FOR_TEST.Test_Id = TESTS.Test_Id
+				JOIN THEMES_FOR_TESTS ON TESTS.Theme_Id = THEMES_FOR_TESTS.Theme_Id
+				WHERE PROGRESS_FOR_TEST.Is_Right = 0 AND User_Id = @user_Id;
+END
 EXEC NO_PASSED_FOR_TEST;
 
 
@@ -126,7 +136,7 @@ SELECT THEMES_FOR_TESTS.Name_Theme, PROGRESS_FOR_TEST.Test_Id, PROGRESS_FOR_TEST
             FROM PROGRESS_FOR_TEST
             JOIN TESTS ON PROGRESS_FOR_TEST.Test_Id = TESTS.Test_Id
             JOIN THEMES_FOR_TESTS ON TESTS.Theme_Id = THEMES_FOR_TESTS.Theme_Id
-            WHERE PROGRESS_FOR_TEST.Is_Right = 0 AND User_Id = {user.idUser};
+            WHERE PROGRESS_FOR_TEST.Is_Right = 1 AND User_Id = {user.idUser};
 EXEC PASSED_FOR_TEST;
 
 
@@ -253,7 +263,7 @@ EXEC NO_ADD_PROGRESS_FOR_TESTS;
 
 
 GO 
---рср нм аепер хг ад, ю лме мюдн врнаш лш гюохяшбюкх 
+--рср нм аепер хг ад, ю лме мюдн врнаш лш гюохяшбюкх ----insert ДКЪ ЯЮЛХУ ЯКНБ
 CREATE PROCEDURE TEST_DICTIONARY AS
 SELECT Words.IdWord, Words.EnglishWord, Words.RussianWord
                 FROM Words

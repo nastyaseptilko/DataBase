@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="eLearning.exe" size="2323448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="eLearning.exe" size="2322936">
       <assemblyIdentity name="eLearning" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0qQ+MYddIboCvv9lktwVIOMrTEz6eAcGFspPkyfyYR4=</dsig:DigestValue>
+        <dsig:DigestValue>NXvwZSkoc8W35YNNj4hTydEuY7uTKPClKHEoT9idHCk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

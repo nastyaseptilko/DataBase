@@ -41,8 +41,9 @@ namespace eLearning.Windows
         {
             string connectionString = DataBase.data;
            
-            string sqlExpression1 = $"INSERT INTO Users ([Login], [Password]) VALUES ('{txbLogin.Text}', '{txbPassword1.Password}')";
-            string sqlExpression2 = "SELECT * FROM Users";
+            //string addUsers = $"INSERT INTO Users ([Login], [Password]) VALUES ('{txbLogin.Text}', '{txbPassword1.Password}')";
+            string addUsers = "ADD_USERS";
+            string getUsersProcedure = "GET_USERS";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -65,7 +66,8 @@ namespace eLearning.Windows
                         }
 
                         
-                        SqlCommand command2 = new SqlCommand(sqlExpression2, connection);
+                        SqlCommand command2 = new SqlCommand(getUsersProcedure, connection);
+                        command2.CommandType = System.Data.CommandType.StoredProcedure;
                         SqlDataReader reader = command2.ExecuteReader();
 
                         bool flagPerson = false;
@@ -85,8 +87,29 @@ namespace eLearning.Windows
 
                         if (!flagPerson)
                         {
-                            SqlCommand command1 = new SqlCommand(sqlExpression1, connection);
-                            command1.ExecuteNonQuery();
+                            SqlCommand registerUserCommand = new SqlCommand(addUsers, connection);
+
+                            // Задаем тип команды
+                            registerUserCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                            // Передаем параметры и значения
+                            SqlParameter loginParameter = new SqlParameter
+                            {
+                                ParameterName = "@login",
+                                Value = txbLogin.Text
+                            };
+
+                            SqlParameter passwordParameter = new SqlParameter
+                            {
+                                ParameterName = "@password",
+                                Value = txbPassword1.Password
+                            };
+
+                            // Добавляем парраметры
+                            registerUserCommand.Parameters.Add(loginParameter);
+                            registerUserCommand.Parameters.Add(passwordParameter);
+
+                            registerUserCommand.ExecuteNonQuery();
                             MessageBox.Show("Регистрация прошла успешно!");
 
                             Login login = new Login();

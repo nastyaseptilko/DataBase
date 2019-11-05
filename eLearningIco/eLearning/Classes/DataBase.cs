@@ -12,7 +12,7 @@ namespace eLearning.Classes
 {
     public static class DataBase
     {
-        public static string data = @"Data Source=.\SQLEXPRESS;Initial Catalog=SAA_MyBase; Integrated Security=True";
+        public static string data = @"Data Source=.\SQLEXPRESS;Initial Catalog=eLEARNING; Integrated Security=True";
 
         private const string ConnectionStringWithoutDb = @"Data Source=.\SQLEXPRESS; Integrated Security=True";
         private const string CREATE_DB_QUERY = "Use master; CREATE DATABASE SAA_MyBase;";
