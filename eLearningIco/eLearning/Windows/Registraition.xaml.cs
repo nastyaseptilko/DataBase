@@ -41,7 +41,7 @@ namespace eLearning.Windows
         {
             string connectionString = DataBase.data;
            
-            //string addUsers = $"INSERT INTO Users ([Login], [Password]) VALUES ('{txbLogin.Text}', '{txbPassword1.Password}')";
+          
             string addUsers = "ADD_USERS";
             string getUsersProcedure = "GET_USERS";
 

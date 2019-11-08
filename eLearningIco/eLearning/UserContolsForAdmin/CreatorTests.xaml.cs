@@ -37,7 +37,8 @@ namespace eLearning.UserContolsForAdmin
         {
             InitializeComponent();
 
-            string sqlExpression1 = "SELECT * FROM Themes";
+            string getThemesForTests = "GET_THEME_FOR_TEST ";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -45,8 +46,9 @@ namespace eLearning.UserContolsForAdmin
                 {
                     connection.Open();
 
-                    SqlCommand sqlCommand1 = new SqlCommand(sqlExpression1, connection);
-                    SqlDataReader reader1 = sqlCommand1.ExecuteReader();
+                    SqlCommand getThemes = new SqlCommand(getThemesForTests, connection);
+                    getThemes.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader reader1 = getThemes.ExecuteReader();
 
                     if (reader1.HasRows)
                     {
@@ -108,11 +110,20 @@ namespace eLearning.UserContolsForAdmin
 
                     connection.Open();
 
-                    SqlCommand command = connection.CreateCommand();
-                    bool flagTheme = false;
+                    string getTestsTests = "GET_TESTS_TEST";
 
-                    command.CommandText = "SELECT * FROM Tests";
-                    SqlDataReader readerTest = command.ExecuteReader();
+                    SqlCommand getTests = new SqlCommand(getTestsTests, connection);
+                    getTests.CommandType = System.Data.CommandType.StoredProcedure;
+                    bool flagTheme = false;
+                    SqlDataReader readerTest = getTests.ExecuteReader();
+
+
+
+                    //SqlCommand command = connection.CreateCommand();
+                    //bool flagTheme = false;
+
+                    //command.CommandText = "SELECT * FROM Tests";
+                    //SqlDataReader readerTest = command.ExecuteReader();
 
                     if (readerTest.HasRows)
                     {
@@ -290,6 +301,7 @@ namespace eLearning.UserContolsForAdmin
                                     //Объект с которым буду работать и флаг(есть ли такая тема в бд)
                                     Classes.Theme theme = new Classes.Theme();
                                     bool flagTheme = false;
+
 
                                     command.CommandText = "SELECT * FROM Themes";
                                     SqlDataReader readerTheme1 = command.ExecuteReader();

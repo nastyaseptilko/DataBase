@@ -31,32 +31,16 @@ namespace eLearning.UserControls
 
             txbUser.Text = user.login.ToString();
 
-            string connectionString = DataBase.data; //строкa подключения
-                                                                                                                                     //пройденные тесты
-
-            string sqlExpressionWin = $@"
-            SELECT Themes.Name, Progress.NameTest, Progress.DateTest, Progress.CountRightAnswer
-            FROM Progress
-            JOIN Tests ON Progress.IdTest = Tests.IdTest
-            JOIN Themes ON Tests.IdTheme = Themes.IdTheme
-            WHERE Progress.IsRight = 1 AND IdUser = {user.idUser}";
-                        //не пройденные тесты
-                        string sqlExpressionNotPassed = $@"
-            SELECT Themes.Name, Progress.NameTest, Progress.DateTest, Progress.CountRightAnswer
-            FROM Progress
-            JOIN Tests ON Progress.IdTest = Tests.IdTest
-            JOIN Themes ON Tests.IdTheme = Themes.IdTheme
-            WHERE Progress.IsRight = 0 AND IdUser = {user.idUser}";
-                        //пройденные тесты по словарю
-                        string sqlExpressionWinTestDictionary = $@"
-            SELECT * FROM ProgressDictionary
-            WHERE IdUser = {user.idUser} AND IsRight = 1;
-            ";
-                        //не пройденные тесты по словарю
-                        string sqlExpressionBadTestDictionary = $@"
-            SELECT * FROM ProgressDictionary
-            WHERE IdUser = {user.idUser} AND IsRight = 0;
-            ";
+            string connectionString = DataBase.data; 
+            // Пройденные тесты
+            string PassedForTests = "PASSED_FOR_TEST";
+            // Пройденные тесты
+            string noPassedForTests = "NO_PASSED_FOR_TEST" ;
+            // Пройденные тесты по словарю
+            string passedForDictionary = "PASSED_FOR_DICTIONARY ";
+            // Не пройденные тесты по словарю
+            string noPassedForDictionary = "NO_PASSED_FOR_DICTIONARY"; 
+           
 
             try
             {
@@ -64,8 +48,19 @@ namespace eLearning.UserControls
                 {
                     sqlConnection.Open();
                     //Этот класс инкапсулирует sql-выражение, которое должно быть выполнено.
-                    SqlCommand sqlCommandWin = new SqlCommand(sqlExpressionWin, sqlConnection);
-                    SqlDataReader readerWinTest = sqlCommandWin.ExecuteReader();
+                    SqlCommand PassedForTestsProgress = new SqlCommand(PassedForTests, sqlConnection);
+                    // Задаем тип команды
+                    PassedForTestsProgress.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    // Передаем параметры и значения
+                    SqlParameter ProgressParameter = new SqlParameter
+                    {
+                        ParameterName = "@user_Id",
+                        Value = user.idUser
+                    };
+
+                    PassedForTestsProgress.Parameters.Add(ProgressParameter);
+                    SqlDataReader readerWinTest = PassedForTestsProgress.ExecuteReader();
 
                     List<Classes.WinTestDictionary> listWinTests = new List<Classes.WinTestDictionary>();
                     if (readerWinTest.HasRows)
@@ -85,8 +80,19 @@ namespace eLearning.UserControls
                     winGrid.ItemsSource = listWinTests;
 
 
-                    SqlCommand sqlCommandNotPassed = new SqlCommand(sqlExpressionNotPassed, sqlConnection);
-                    SqlDataReader readerNotPassedTest = sqlCommandNotPassed.ExecuteReader();
+                    SqlCommand noPassedForTestsProgress = new SqlCommand(noPassedForTests, sqlConnection);
+                    // Задаем тип команды
+                    noPassedForTestsProgress.CommandType = System.Data.CommandType.StoredProcedure;
+                    // Передаем параметры и значения
+                    SqlParameter noProgressParameter = new SqlParameter
+                    {
+                        ParameterName = "@user_Id",
+                        Value = user.idUser
+                    };
+
+                    noPassedForTestsProgress.Parameters.Add(noProgressParameter);
+
+                    SqlDataReader readerNotPassedTest = noPassedForTestsProgress.ExecuteReader();
 
 
                     List<Classes.NotPassedTestDictionary> listNotPassedTests = new List<Classes.NotPassedTestDictionary>();
@@ -107,8 +113,17 @@ namespace eLearning.UserControls
                     notPassedGrid.ItemsSource = listNotPassedTests;
 
 
-                    SqlCommand sqlCommandWinTestDict = new SqlCommand(sqlExpressionWinTestDictionary, sqlConnection);
-                    SqlDataReader readerWinTestDict = sqlCommandWinTestDict.ExecuteReader();
+                    SqlCommand passedForDictionaryProgress = new SqlCommand(passedForDictionary , sqlConnection);
+                    passedForDictionaryProgress.CommandType = System.Data.CommandType.StoredProcedure;
+                    // Передаем параметры и значения
+                    SqlParameter progressParameterDictionary = new SqlParameter
+                    {
+                        ParameterName = "@user_Id",
+                        Value = user.idUser
+                    };
+
+                    passedForDictionaryProgress.Parameters.Add(progressParameterDictionary);
+                    SqlDataReader readerWinTestDict = passedForDictionaryProgress.ExecuteReader();
 
                     List<Classes.TestDictionary> listWinTestsDict = new List<Classes.TestDictionary>();
                     if (readerWinTestDict.HasRows)
@@ -128,8 +143,18 @@ namespace eLearning.UserControls
                     winDictTestGrid.ItemsSource = listWinTestsDict;
 
 
-                    SqlCommand sqlCommandBadTestDict = new SqlCommand(sqlExpressionBadTestDictionary, sqlConnection); //позволяет выполнять операции с данными из БД
-                    SqlDataReader readerBadTestDict = sqlCommandBadTestDict.ExecuteReader();//считывает полученные в результате запроса данные
+                    SqlCommand noPassedForDictionaryProgress = new SqlCommand(noPassedForDictionary, sqlConnection); //позволяет выполнять операции с данными из БД
+                    noPassedForDictionaryProgress.CommandType = System.Data.CommandType.StoredProcedure;
+                    // Передаем параметры и значения
+                    SqlParameter noProgressParameterDictionary = new SqlParameter
+                    {
+                        ParameterName = "@user_Id",
+                        Value = user.idUser
+                    };
+
+                    noPassedForDictionaryProgress.Parameters.Add(noProgressParameterDictionary);
+                    
+                    SqlDataReader readerBadTestDict = noPassedForDictionaryProgress.ExecuteReader();
 
                     List<Classes.TestDictionary> listBadTestsDict = new List<Classes.TestDictionary>();
                     if (readerBadTestDict.HasRows)

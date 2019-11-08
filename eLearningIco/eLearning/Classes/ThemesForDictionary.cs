@@ -9,6 +9,7 @@ namespace eLearning.Classes
     public class ThemesForDictionary
     {
         public object IdTheme { get; set; }
+        public object IdAdmin { get; set; }
         public object NameThemeForDictionary { get; set; }
     }
 }

@@ -55,6 +55,7 @@ namespace eLearning.UserControls
                         {
                             Classes.ThemesForDictionary themesForDictionary = new Classes.ThemesForDictionary();
                             themesForDictionary.IdTheme = reader.GetValue(0);
+                            themesForDictionary.IdAdmin = reader.GetValue(0);
                             themesForDictionary.NameThemeForDictionary = reader.GetValue(1);
                             listThemseForDictionaries.Add(themesForDictionary);
                         }

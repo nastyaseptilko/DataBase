@@ -92,17 +92,30 @@ CREATE TABLE WORDS
 	[Russian_Word] nvarchar(30)
 )
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+--GO
+--CREATE PROCEDURE THEMES_DICTIONARY
+--AS
+--BEGIN
+--INSERT INTO [THEMES_FOR_DICTIONARY] ([Theme_Id_Dictionary],[Admin_Id], [Name_Theme_For_Dictionary])
+--VALUES (1,1, '«Ì‡ÍÓÏÒÚ‚Ó. Œ·˘ÂÌËÂ'),
+--	   (2,1, 'ƒÓÏ'),
+--	   (3,1, '√ÓÓ‰'),
+--	   (4,1, '≈‰‡');
+--END
+--EXEC THEMES_DICTIONARY;
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 USE eLEARNING;
 
+-----
 GO
----
 CREATE PROCEDURE GET_USERS AS
 	SELECT * FROM USERS
----
-
 EXEC GET_USERS;
+-----
 
+
+----
 GO
 CREATE PROCEDURE ADD_USERS
 				@login NVARCHAR(30),
@@ -112,8 +125,10 @@ BEGIN
 	INSERT INTO USERS([Login], [Password]) VALUES (@login, @password);
 END
 EXEC ADD_USERS 'qwd', 'qwd';
+-----
 
 
+-----
 GO
 CREATE PROCEDURE NO_PASSED_FOR_TEST 
 			@user_Id int
@@ -126,37 +141,92 @@ BEGIN
 				JOIN THEMES_FOR_TESTS ON TESTS.Theme_Id = THEMES_FOR_TESTS.Theme_Id
 				WHERE PROGRESS_FOR_TEST.Is_Right = 0 AND User_Id = @user_Id;
 END
-EXEC NO_PASSED_FOR_TEST;
+EXEC NO_PASSED_FOR_TEST '1';
+-----
 
 
+
+-----
 GO
-CREATE PROCEDURE PASSED_FOR_TEST AS
+CREATE PROCEDURE PASSED_FOR_TEST 
+					@user_Id int
+AS
+BEGIN
 --œ–Œ…ƒ≈ÕÕ€≈ “≈—“€ 
 SELECT THEMES_FOR_TESTS.Name_Theme, PROGRESS_FOR_TEST.Test_Id, PROGRESS_FOR_TEST.Date_Test, PROGRESS_FOR_TEST.Count_Right_Answers
             FROM PROGRESS_FOR_TEST
             JOIN TESTS ON PROGRESS_FOR_TEST.Test_Id = TESTS.Test_Id
             JOIN THEMES_FOR_TESTS ON TESTS.Theme_Id = THEMES_FOR_TESTS.Theme_Id
-            WHERE PROGRESS_FOR_TEST.Is_Right = 1 AND User_Id = {user.idUser};
-EXEC PASSED_FOR_TEST;
+            WHERE PROGRESS_FOR_TEST.Is_Right = 1 AND User_Id =  @user_Id;
+END
+EXEC PASSED_FOR_TEST '1' ;
+-----
 
 
+
+-----
 GO
-CREATE PROCEDURE NO_PASSED_FOR_DICTIONARY AS
+CREATE PROCEDURE NO_PASSED_FOR_DICTIONARY
+						@user_Id int 
+AS
+BEGIN
 --Õ≈ œ–Œ…ƒ≈ÕÕ€≈ “≈—“€ œŒ —ÀŒ¬¿–ﬁ
 SELECT * FROM PROGRESS_FOR_DICTIONARY
-            WHERE User_Id = {user.idUser} AND IsRight = 0;
-EXEC NO_PASSED_FOR_DICTIONARY;
+            WHERE User_Id = @user_Id  AND Is_Right = 0;
+END
+EXEC NO_PASSED_FOR_DICTIONARY '1' ;
+------
 
 
+
+-----
 GO
-CREATE PROCEDURE PASSED_FOR_DICTIONARY AS
+CREATE PROCEDURE PASSED_FOR_DICTIONARY 
+					@user_Id int 
+AS
+BEGIN
 --œ–Œ…ƒ≈ÕÕ€≈ “≈—“€ œŒ —ÀŒ¬¿–ﬁ
 SELECT * FROM PROGRESS_FOR_DICTIONARY
-            WHERE User_Id = {user.idUser} AND IsRight = 1;
-EXEC PASSED_FOR_DICTIONARY;
+            WHERE User_Id = @user_Id AND Is_Right = 1;
+END
+EXEC PASSED_FOR_DICTIONARY  '1' ;
+-----
+
+
+-----
+GO
+CREATE PROCEDURE GET_THEME_FOR_TEST AS
+	SELECT * FROM THEMES_FOR_TESTS
+EXEC GET_THEME_FOR_TEST ;
+------
 
 
 
+-----
+GO
+CREATE PROCEDURE GET_TESTS_TEST AS
+	SELECT * FROM TESTS
+EXEC GET_TESTS_TEST ;
+
+
+
+
+
+------ÌÂ –¿¡Œ“¿≈“!!!!!!!!!
+GO
+CREATE PROCEDURE GET_TESTS_FOR_TEST 
+					@theme_Id int
+AS
+BEGIN
+SELECT * FROM TESTS  WHERE Theme_Id = @theme_Id
+END
+EXEC GET_TESTS_FOR_TEST '1';
+-----
+
+
+
+
+-----
 GO 
 CREATE PROCEDURE CREATE_TESTS AS
 SELECT THEMES_FOR_TESTS.Name_Theme, TESTS.Name_Test FROM TESTS
