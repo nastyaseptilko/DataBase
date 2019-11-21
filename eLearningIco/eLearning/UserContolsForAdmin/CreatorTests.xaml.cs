@@ -75,25 +75,31 @@ namespace eLearning.UserContolsForAdmin
                 }
             }
         }
+           
 
         private void NewTheme_Selected(object sender, RoutedEventArgs e)
         {
             listTests.Items.Clear();
             SelectedTheme = ((ListBoxItem)sender).Content.ToString();
+            string getTestsTests = "GET_TESTS_FOR_TEST";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 Classes.Theme currentTheme = themes.Where(t => t.NameTheme.ToString() == SelectedTheme).First();
-                SqlCommand command = new SqlCommand(
-                    $"SELECT * FROM Tests " +
-                    $"WHERE IdTheme = " +
-                    $"{currentTheme.IdTheme}", connection);
-                SqlDataReader reader = command.ExecuteReader();
+                SqlCommand getTestsTestsCommand = new SqlCommand(getTestsTests, connection);
+                getTestsTestsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter themeIdParameter = new SqlParameter
+                {
+                    ParameterName = "@theme_Id",
+                    Value = currentTheme.IdTheme
+                };
+                getTestsTestsCommand.Parameters.Add(themeIdParameter);
+                SqlDataReader reader = getTestsTestsCommand.ExecuteReader();
 
                 while (reader.Read())
                 {
                     ListViewItem test = new ListViewItem();
-                    test.Content = reader.GetValue(1).ToString();
+                    test.Content = reader.GetValue(2).ToString();
                     test.Selected += NewTest_Selected;
                     listTests.Items.Add(test);
                 }
@@ -117,13 +123,6 @@ namespace eLearning.UserContolsForAdmin
                     bool flagTheme = false;
                     SqlDataReader readerTest = getTests.ExecuteReader();
 
-
-
-                    //SqlCommand command = connection.CreateCommand();
-                    //bool flagTheme = false;
-
-                    //command.CommandText = "SELECT * FROM Tests";
-                    //SqlDataReader readerTest = command.ExecuteReader();
 
                     if (readerTest.HasRows)
                     {
@@ -297,13 +296,14 @@ namespace eLearning.UserContolsForAdmin
                                 {                                    
                                     SqlCommand command = connection.CreateCommand();
                                     command.Transaction = transaction;
-
+                                    command.CommandType = System.Data.CommandType.StoredProcedure;
                                     //Объект с которым буду работать и флаг(есть ли такая тема в бд)
                                     Classes.Theme theme = new Classes.Theme();
                                     bool flagTheme = false;
 
 
-                                    command.CommandText = "SELECT * FROM Themes";
+                                    command.CommandText = "GET_THEME_FOR_TEST";
+                                    
                                     SqlDataReader readerTheme1 = command.ExecuteReader();
 
                                     if (readerTheme1.HasRows)
@@ -330,9 +330,9 @@ namespace eLearning.UserContolsForAdmin
                                         MessageBox.Show("Выберите одну из тем");
                                         return;
                                     }
-
-                                                                
-                                    command.CommandText = "SELECT * FROM Tests";
+                                    
+                                    command.CommandText = "GET_TESTS_TEST";
+                                    command.CommandType = System.Data.CommandType.StoredProcedure;
                                     SqlDataReader readerTest1 = command.ExecuteReader();
 
                                     Classes.Test test = new Classes.Test();
@@ -342,12 +342,13 @@ namespace eLearning.UserContolsForAdmin
                                     {
                                         while (readerTest1.Read())
                                         {
-                                            if (SelectedTest == readerTest1.GetValue(1).ToString())
+                                            if (SelectedTest == readerTest1.GetValue(2).ToString())
                                             {
                                                 flagTest = true;
                                                 test.idTest = readerTest1.GetValue(0);
-                                                test.Name = readerTest1.GetValue(1).ToString();
-                                                test.IdTheme = readerTest1.GetValue(2);
+                                                test.idAdmin = readerTest1.GetValue(1);
+                                                test.Name = readerTest1.GetValue(2).ToString();
+                                                test.IdTheme = readerTest1.GetValue(3);
                                                 break;
                                             }
                                         }
@@ -356,41 +357,70 @@ namespace eLearning.UserContolsForAdmin
 
                                     if (!flagTest)
                                     {
+                                        // Добавить команду добавления теста
                                         numberQuestion = 1;
-                                        command.CommandText = $"INSERT INTO Tests ([Name], [IdTheme]) VALUES ('{testInBD.Name}', {theme.IdTheme})";
-                                        command.ExecuteNonQuery();
+                                        SqlCommand addTestsCommand = new SqlCommand("Add_TESTS", connection);
+                                        addTestsCommand.Transaction = transaction;
+                                        addTestsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                        
+                                        // Передаем параметры и значения
+                                        SqlParameter nameTestParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@name_test",
+                                            Value = testInBD.Name
+                                        };
+
+                                        SqlParameter adminIdParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@admin_id",
+                                            Value = Admin.getInstance().Id
+                                        };
+
+                                        SqlParameter themeIdParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@theme_Id",
+                                            Value = theme.IdTheme
+                                        };
+
+                                        // Добавляем парраметры
+                                        addTestsCommand.Parameters.Add(nameTestParameter);
+                                        addTestsCommand.Parameters.Add(adminIdParameter);
+                                        addTestsCommand.Parameters.Add(themeIdParameter);
+                                        addTestsCommand.ExecuteNonQuery();
                                     }
                                     else
                                     {
                                         MessageBox.Show("К существующему тесту добавляем информацию!");
-                                    }                                
-
-                                    
+                                    }
 
 
-                                    command.CommandText = "SELECT * FROM Tests";
-                                    SqlDataReader readerTest2 = command.ExecuteReader();
+                                    SqlCommand getAllTestsCommand = new SqlCommand("GET_TESTS_TEST", connection);
+                                    getAllTestsCommand.Transaction = transaction;
+                                    getAllTestsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                    SqlDataReader readerTest2 = getAllTestsCommand.ExecuteReader();
 
                                     if (readerTest2.HasRows)
                                     {
                                         while (readerTest2.Read())
                                         {
-                                            if (SelectedTest == readerTest2.GetValue(1).ToString())
+                                            if (SelectedTest == readerTest2.GetValue(2).ToString())
                                             {
                                                 test.idTest = readerTest2.GetValue(0);
-                                                test.Name = readerTest2.GetValue(1).ToString();
-                                                test.IdTheme = readerTest2.GetValue(2);
+                                                test.idAdmin = readerTest2.GetValue(1);
+                                                test.Name = readerTest2.GetValue(2).ToString();
+                                                test.IdTheme = readerTest2.GetValue(3);
                                                 break;
                                             }
                                         }
                                     }
                                     readerTest2.Close();
 
-//--------------------------------------------------------------------------------------------------------------------------
-
-
-                                    command.CommandText = "SELECT * FROM Questions";
-                                    SqlDataReader readerQuestion1 = command.ExecuteReader();
+                                    //--------------------------------------------------------------------------------------------------------------------------
+                                    
+                                    SqlCommand getTestQuestionsCommand = new SqlCommand("GET_QUESTIONS", connection);
+                                    getTestQuestionsCommand.Transaction = transaction;
+                                    getTestQuestionsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                    SqlDataReader readerQuestion1 = getTestQuestionsCommand.ExecuteReader();
 
                                     Classes.Question question = new Classes.Question();
                                     bool flagQuestion = false; //проверка, есть ли вопросы в бд
@@ -412,11 +442,35 @@ namespace eLearning.UserContolsForAdmin
                                     }
                                     readerQuestion1.Close();
 
-                                    
                                     if (!flagQuestion)
                                     {
-                                        command.CommandText = $"INSERT INTO Questions ([IdTest], [NumberQuestion], [Question]) VALUES ({test.idTest}, {numberQuestion}, '{questionInDB.SomeQuestion}')";
-                                        command.ExecuteNonQuery();
+                                        SqlCommand addQuestionsCommand = new SqlCommand("Add_QUESTIONS", connection);
+                                        addQuestionsCommand.Transaction = transaction;
+                                        addQuestionsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                                        // Передаем параметры и значения
+                                        SqlParameter testIdParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@test_Id",
+                                            Value = (int) test.idTest
+                                        };
+
+                                        SqlParameter numberQuestionParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@number_question",
+                                            Value = numberQuestion
+                                        };
+
+                                        SqlParameter questionParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@question",
+                                            Value = questionInDB.SomeQuestion
+                                        };
+                                        // Добавляем парраметры
+                                        addQuestionsCommand.Parameters.Add(testIdParameter);
+                                        addQuestionsCommand.Parameters.Add(numberQuestionParameter);
+                                        addQuestionsCommand.Parameters.Add(questionParameter);
+                                        addQuestionsCommand.ExecuteNonQuery();
                                         numberQuestion++;
                                     }
                                     else
@@ -424,10 +478,8 @@ namespace eLearning.UserContolsForAdmin
                                         MessageBox.Show("Такой вопрос уже есть!");
                                         return;
                                     }
-
-
-                                    command.CommandText = "SELECT * FROM Questions";
-                                    SqlDataReader readerQuestion2 = command.ExecuteReader();
+                                    
+                                    SqlDataReader readerQuestion2 = getTestQuestionsCommand.ExecuteReader();
 
                                     bool isQuestion = false;
                                     if (readerQuestion2.HasRows)
@@ -448,17 +500,46 @@ namespace eLearning.UserContolsForAdmin
                                     readerQuestion2.Close();
 
                                     //--------------------------------------------------------------------------------------------------------------------------
-
+                                    
                                     if (isQuestion)
                                     {
-                                        command.CommandText = $"INSERT INTO Answer ([Answer], [IsRight], [IdQuestion]) VALUES ('{listAnswerInDB[0].SomeAnswer}', 1, {question.IdQuestion})";
-                                        command.ExecuteNonQuery();
-                                        command.CommandText = $"INSERT INTO Answer ([Answer], [IsRight], [IdQuestion]) VALUES ('{listAnswerInDB[1].SomeAnswer}', 0, {question.IdQuestion})";
-                                        command.ExecuteNonQuery();
-                                        command.CommandText = $"INSERT INTO Answer ([Answer], [IsRight], [IdQuestion]) VALUES ('{listAnswerInDB[2].SomeAnswer}', 0, {question.IdQuestion})";
-                                        command.ExecuteNonQuery();
+                                    
+                                        SqlCommand addAnswerCommandOne = new SqlCommand("Add_ANSWER ", connection);
+                                        addAnswerCommandOne.Transaction = transaction;
+                                        addAnswerCommandOne.CommandType = System.Data.CommandType.StoredProcedure;
+                                        // Передаем параметры и значения
+                                        SqlParameter answerParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@answer",
+                                            Value = listAnswerInDB[0].SomeAnswer
+                                        };
 
-                                        //
+                                        SqlParameter isRightParameter = new SqlParameter
+                                        {
+                                            
+                                            ParameterName = "@is_right",
+                                            Value = 1
+                                        };
+
+                                        SqlParameter questionIdParameter = new SqlParameter
+                                        {
+                                            ParameterName = "@question_Id",
+                                            Value = question.IdQuestion
+                                        };
+                                        // Добавляем парраметры
+                                        addAnswerCommandOne.Parameters.Add(answerParameter);
+                                        addAnswerCommandOne.Parameters.Add(isRightParameter);
+                                        addAnswerCommandOne.Parameters.Add(questionIdParameter);
+                                        addAnswerCommandOne.ExecuteNonQuery();
+
+                                        answerParameter.Value = listAnswerInDB[1].SomeAnswer;
+                                        isRightParameter.Value = 0;
+                                        addAnswerCommandOne.ExecuteNonQuery();
+                                        
+
+                                        answerParameter.Value = listAnswerInDB[2].SomeAnswer;
+                                        addAnswerCommandOne.ExecuteNonQuery();
+                                        
                                         transaction.Commit();
 
                                     }
@@ -502,10 +583,19 @@ namespace eLearning.UserContolsForAdmin
                 connection.Open();
 
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = $@"
-                                        SELECT Questions.Question FROM Questions
-                                        JOIN Tests ON Questions.IdTest = Tests.IdTest
-                                        WHERE Tests.Name = '{listTests.SelectedItem}';";
+                command.CommandText = "JOIN_QUESTION ";
+
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                // Передаем параметры и значения
+                SqlParameter nameTestParameter = new SqlParameter
+                {
+                    ParameterName = "@name_test",
+                    Value = listTests.SelectedItem
+              
+                };
+                command.Parameters.Add(nameTestParameter);
+
 
                 SqlDataReader readerTest = command.ExecuteReader();
                 if (readerTest.HasRows)

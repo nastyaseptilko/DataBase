@@ -131,10 +131,10 @@ namespace eLearning.UserControls
                         while (readerWinTestDict.Read())
                         {
                             Classes.TestDictionary testDictionary = new Classes.TestDictionary();
-                            testDictionary.NameTest = readerWinTestDict.GetValue(1);
-                            testDictionary.DateTest = readerWinTestDict.GetValue(2);
-                            testDictionary.CountRightAnswer = readerWinTestDict.GetValue(4);
-                            testDictionary.CountQuestion = readerWinTestDict.GetValue(5);
+                            testDictionary.NameTest = readerWinTestDict.GetValue(9);
+                            testDictionary.DateTest = readerWinTestDict.GetValue(3);
+                            testDictionary.CountRightAnswer = readerWinTestDict.GetValue(5);
+                            testDictionary.CountQuestion = readerWinTestDict.GetValue(6);
                             listWinTestsDict.Add(testDictionary);
                         }
                     }
@@ -162,10 +162,10 @@ namespace eLearning.UserControls
                         while (readerBadTestDict.Read())
                         {
                             Classes.TestDictionary testDictionary = new Classes.TestDictionary();
-                            testDictionary.NameTest = readerBadTestDict.GetValue(1);
-                            testDictionary.DateTest = readerBadTestDict.GetValue(2);
-                            testDictionary.CountRightAnswer = readerBadTestDict.GetValue(4);
-                            testDictionary.CountQuestion = readerBadTestDict.GetValue(5);
+                            testDictionary.NameTest = readerBadTestDict.GetValue(9);
+                            testDictionary.DateTest = readerBadTestDict.GetValue(3);
+                            testDictionary.CountRightAnswer = readerBadTestDict.GetValue(5);
+                            testDictionary.CountQuestion = readerBadTestDict.GetValue(6);
                             listBadTestsDict.Add(testDictionary);
                         }
                     }

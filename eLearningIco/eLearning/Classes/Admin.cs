@@ -8,14 +8,14 @@ namespace eLearning.Classes
 {
     public class Admin
     {
-        public string login = "admin";
-        public string password = "admin";
-
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string Login { get; set; }
 
         private Admin() { }
 
         // Реализация паттерна Singleton
-        public static Admin admin;
+        private static Admin admin;
 
         public static Admin getInstance()
         {

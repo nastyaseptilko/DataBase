@@ -28,6 +28,8 @@ namespace eLearning.TestsUserControl
     {
         Classes.PodTheme podTheme;
 
+        private int ThemeDictionaryId { get; set; }
+
         public List<Classes.Dictionary> dictionaries = new List<Classes.Dictionary>();
         Classes.User user;
         public TestDictionary(Classes.PodTheme podTheme, Classes.User user)
@@ -36,18 +38,12 @@ namespace eLearning.TestsUserControl
             this.podTheme = podTheme;
             InitializeComponent();
 
+            ThemeDictionaryId = (int) podTheme.IdThemeForDictionary;
             btnBeginTest.Visibility = Visibility.Visible;
-
             txbNameTest.Text = podTheme.NameTheme.ToString();
 
             string connectionString = DataBase.data;
-            string sqlExpression = $@"
-                SELECT Words.IdWord, Words.EnglishWord, Words.RussianWord
-                FROM Words
-                JOIN PodThemes ON Words.IdTheme = PodThemes.IdTheme
-                LEFT JOIN ThemesForDictionary ON ThemesForDictionary.IdTheme = PodThemes.IdTheme
-                WHERE NameTheme = '{txbNameTest.Text}'
-                ";
+            string testDictionary = "TEST_DICTIONARY";
 
             try
             {
@@ -55,8 +51,23 @@ namespace eLearning.TestsUserControl
                 {
                     sqlConnection.Open();
 
-                    SqlCommand sqlCommand = new SqlCommand(sqlExpression, sqlConnection);
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    SqlCommand testDictionaryCommand = new SqlCommand(testDictionary, sqlConnection);
+                    testDictionaryCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlParameter themeIdParameter = new SqlParameter
+                    {
+                        ParameterName = "@theme_id",
+                        Value = podTheme.IdThemeForDictionary
+                    };
+                    SqlParameter podthemeIdParameter = new SqlParameter
+                    {
+                        ParameterName = "@podtheme_id",
+                        Value = podTheme.IdTheme
+                    };
+                    testDictionaryCommand.Parameters.Add(themeIdParameter);
+                    testDictionaryCommand.Parameters.Add(podthemeIdParameter);
+
+
+                    SqlDataReader reader = testDictionaryCommand.ExecuteReader();
 
                     if (reader.HasRows)
                     {
@@ -70,7 +81,7 @@ namespace eLearning.TestsUserControl
                         }
                     }
                     reader.Close();
-
+                    
                     for (int i = 0; i < dictionaries.Count; i++)
                     {
                         switch (i)
@@ -333,18 +344,58 @@ namespace eLearning.TestsUserControl
                     int flagWinTest = 1;
 
                     string connectionString = DataBase.data;
-                    string sqlExpression = $@"
-                        INSERT INTO ProgressDictionary (IdUser, NameTest, DateTest, IsRight, CountRightAnswer, CountQuestion)
-                        VALUES ({user.idUser}, '{txbNameTest.Text}', '{DateTime.Now}', {flagWinTest}, {countRightAnswer}, {dictionaries.Count - 2})";
-
+                    string addProgressForDictionary = "ADD_PROGRESS_FOR_DICTIONARY";
                     try
                     {
                         using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                         {
                             sqlConnection.Open();
 
-                            SqlCommand sqlCommand = new SqlCommand(sqlExpression, sqlConnection);
-                            sqlCommand.ExecuteNonQuery();
+                            SqlCommand addProgressForDictionaryCommand = new SqlCommand(addProgressForDictionary, sqlConnection);
+                            addProgressForDictionaryCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            // Передаем параметры и значения
+                            SqlParameter userIdParameter = new SqlParameter
+                            {
+                                ParameterName = "@user_Id",
+                                Value = user.idUser
+                            };
+                            SqlParameter themeIdDictionary = new SqlParameter
+                            {
+                                ParameterName = "@theme_Id_Dictionary ",
+                                Value = ThemeDictionaryId
+
+                            };
+                            SqlParameter dateTestParameter = new SqlParameter
+                            {
+                                ParameterName = "@date_test",
+                                Value = DateTime.Now
+                            };
+
+                            SqlParameter isRightParameter = new SqlParameter
+                            {
+                                ParameterName= "@is_right",
+                                Value= flagWinTest
+
+                            };
+                            SqlParameter countRightAnswersParameter = new SqlParameter
+                            {
+                                ParameterName = "@count_right_answer ",
+                                Value = countRightAnswer
+                            };
+                            SqlParameter countQuestionParameter = new SqlParameter
+                            {
+                                ParameterName = "@count_question",
+                                Value = dictionaries.Count - 2
+                            };
+
+                            // Добавляем парраметры
+                            addProgressForDictionaryCommand.Parameters.Add(userIdParameter);
+                            addProgressForDictionaryCommand.Parameters.Add(themeIdDictionary);
+                            addProgressForDictionaryCommand.Parameters.Add(dateTestParameter);
+                            addProgressForDictionaryCommand.Parameters.Add(isRightParameter);
+                            addProgressForDictionaryCommand.Parameters.Add(countRightAnswersParameter);
+                            addProgressForDictionaryCommand.Parameters.Add(countQuestionParameter);
+                            addProgressForDictionaryCommand.ExecuteNonQuery();
                         }
                     }
                     catch (Exception ex)
@@ -366,9 +417,7 @@ namespace eLearning.TestsUserControl
                     int flagWinTest = 0;
 
                     string connectionString = DataBase.data;
-                    string sqlExpression = $@"
-                        INSERT INTO ProgressDictionary (IdUser, NameTest, DateTest, IsRight, CountRightAnswer, CountQuestion)
-                        VALUES ({user.idUser}, '{txbNameTest.Text}', '{DateTime.Now}', {flagWinTest}, {countRightAnswer}, {dictionaries.Count - 2})";
+                    string progressForDictionary = "ADD_PROGRESS_FOR_DICTIONARY ";
 
                     try
                     {
@@ -376,8 +425,52 @@ namespace eLearning.TestsUserControl
                         {
                             sqlConnection.Open();
 
-                            SqlCommand sqlCommand = new SqlCommand(sqlExpression, sqlConnection);
-                            sqlCommand.ExecuteNonQuery();
+                            SqlCommand progressDictionaryCommand = new SqlCommand(progressForDictionary, sqlConnection);
+
+                            progressDictionaryCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            SqlParameter userIdParameter = new SqlParameter
+                            {
+                                ParameterName = "@user_Id",
+                                Value = user.idUser
+                            };
+                            SqlParameter themeIdDictionary = new SqlParameter
+                            {
+                                ParameterName = "@theme_Id_Dictionary ",
+                                Value = ThemeDictionaryId
+
+                            };
+                            SqlParameter dateTestParameter = new SqlParameter
+                            {
+                                ParameterName = "@date_test",
+                                Value = DateTime.Now
+                            };
+
+                            SqlParameter isRightParameter = new SqlParameter
+                            {
+                                ParameterName = "@is_right",
+                                Value = flagWinTest
+
+                            };
+                            SqlParameter countRightAnswersParameter = new SqlParameter
+                            {
+                                ParameterName = "@count_right_answer ",
+                                Value = countRightAnswer
+                            };
+                            SqlParameter countQuestionParameter = new SqlParameter
+                            {
+                                ParameterName = "@count_question",
+                                Value = dictionaries.Count - 2
+                            };
+
+                            progressDictionaryCommand.Parameters.Add(userIdParameter);
+                            progressDictionaryCommand.Parameters.Add(themeIdDictionary);
+                            progressDictionaryCommand.Parameters.Add(dateTestParameter);
+                            progressDictionaryCommand.Parameters.Add(isRightParameter);
+                            progressDictionaryCommand.Parameters.Add(countRightAnswersParameter);
+                            progressDictionaryCommand.Parameters.Add(countQuestionParameter);
+
+
+                            progressDictionaryCommand.ExecuteNonQuery();
                         }
                     }
                     catch (Exception ex)

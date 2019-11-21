@@ -42,22 +42,23 @@ namespace eLearning.TestsUserControl
             txbNameTest.Text = test.Name.ToString();
             txbNameTest.TextWrapping = TextWrapping.Wrap;
 
-
-            string sqlExpression = $@"
-            Select Tests.Name, Questions.IdQuestion, Questions.NumberQuestion, Questions.Question FROM Questions
-            join Tests ON Questions.IdTest = Tests.IdTest
-            where Tests.IdTest = {test.idTest}
-";
+            string testArticles = "TEST_ARTICLES_TESTS";
 
             try
             {
                 using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                 {
                     sqlConnection.Open();
-                    SqlCommand sqlCommand = new SqlCommand(sqlExpression, sqlConnection);
-                    SqlDataReader readerQuestion = sqlCommand.ExecuteReader();
-
-
+                    SqlCommand testArticlesCommand = new SqlCommand(testArticles, sqlConnection);
+                    testArticlesCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlParameter testIdParameter = new SqlParameter
+                    {
+                        ParameterName = "@test_Id",
+                        Value = test.idTest
+                    };
+                    testArticlesCommand.Parameters.Add(testIdParameter);
+                    SqlDataReader readerQuestion = testArticlesCommand.ExecuteReader();
+                    
                     if (readerQuestion.HasRows)
                     {
                         while (readerQuestion.Read())
@@ -116,10 +117,7 @@ namespace eLearning.TestsUserControl
                     stackPanel.Margin = new Thickness(60, 130, 0, 0);
 
                     //получаем ответы по вопросу
-                    string sqlExpressionAnswer = $@"
-                                                SELECT Answer.Answer FROM Answer
-                                                join Questions on Answer.IdQuestion = Questions.IdQuestion
-                                                where Questions.Question = '{createTests[i].Question}'";
+                    string articlesAnswer = "TEST_ARTICLES_ANSWERS ";
 
 
                     List<string> answers = new List<string>();
@@ -129,8 +127,16 @@ namespace eLearning.TestsUserControl
                         {
                             sqlConnection.Open();
 
-                            SqlCommand sqlCommand2 = new SqlCommand(sqlExpressionAnswer, sqlConnection);
-                            SqlDataReader readerAnswer = sqlCommand2.ExecuteReader();
+                            SqlCommand articlesAnswerCommand= new SqlCommand(articlesAnswer, sqlConnection);
+                            articlesAnswerCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            SqlParameter qustionParameter = new SqlParameter
+                            {
+                                ParameterName = "@question",
+                                Value = createTests[i].Question
+                            };
+                            articlesAnswerCommand.Parameters.Add(qustionParameter);
+
+                            SqlDataReader readerAnswer = articlesAnswerCommand.ExecuteReader();
 
                             if (readerAnswer.HasRows)
                             {
@@ -180,12 +186,7 @@ namespace eLearning.TestsUserControl
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            string sqlExpression = $@"
-        SELECT Questions.NumberQuestion, Questions.Question, Answer.Answer FROM Questions
-        JOIN Answer ON Questions.IdQuestion = Answer.IdQuestion
-        JOIN Tests ON Questions.IdTest = Tests.IdTest
-        WHERE Answer.IsRight = 1 AND Tests.Name = '{txbNameTest.Text}'
-";
+            string articlesQuestion = "TEST_ARTICLES_QUESTIONS ";
             List<Classes.RightAnswer> rightAnswers = new List<Classes.RightAnswer>();
             try
             {
@@ -194,8 +195,16 @@ namespace eLearning.TestsUserControl
                 using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                 {
                     sqlConnection.Open();
-                    SqlCommand sqlCommand = new SqlCommand(sqlExpression, sqlConnection);
-                    SqlDataReader readerQuestion = sqlCommand.ExecuteReader();
+                    SqlCommand articlesQuestionCommand = new SqlCommand(articlesQuestion, sqlConnection);
+                    articlesQuestionCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlParameter nameTestParameter = new SqlParameter
+                    {
+                        ParameterName = "@name_test",
+                        Value = txbNameTest.Text
+                    };
+                    articlesQuestionCommand.Parameters.Add(nameTestParameter);
+
+                    SqlDataReader readerQuestion = articlesQuestionCommand.ExecuteReader();
 
                     if (readerQuestion.HasRows)
                     {
@@ -262,15 +271,48 @@ namespace eLearning.TestsUserControl
             {
                 MessageBox.Show("Тест пройден. Просмотрите вкладку достижений!");
 
-                string sqlExpressionProgressWin = $"INSERT INTO PROGRESS (IdUser, IdTest, NameTest, DateTest, IsRight, CountRightAnswer) VALUES ({user.idUser}, {test.idTest}, '{test.Name}', '{DateTime.Now}', 1, {countRightAnswer})";
-
+                //string sqlExpressionProgressWin = $"INSERT INTO PROGRESS_FOR_TEST(IdUser, IdTest, DateTest, IsRight, CountRightAnswer) VALUES 
+                //({user.idUser}, {test.idTest}, '{DateTime.Now}', 1, {countRightAnswer})";
+                string addProgressForTests = "ADD_PROGRESS_FOR_TESTS";
                 try
                 {
                     using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                     {
                         sqlConnection.Open();
 
-                        SqlCommand sqlCommandProgressWin = new SqlCommand(sqlExpressionProgressWin, sqlConnection);
+                        SqlCommand sqlCommandProgressWin = new SqlCommand(addProgressForTests, sqlConnection);
+                        sqlCommandProgressWin.CommandType = System.Data.CommandType.StoredProcedure;
+                        // ДОБАВИТЬ ВСЕ ПАРАМЕТРЫ К КОМАНДЕ
+                        SqlParameter userIdParameter = new SqlParameter
+                        {
+                            ParameterName = "@user_Id",
+                            Value = user.idUser
+                        };
+                        SqlParameter testIdParameter = new SqlParameter
+                        {
+                            ParameterName = "@test_Id",
+                            Value = test.idTest
+                        };
+                        SqlParameter dateTestParameter = new SqlParameter
+                        {
+                            ParameterName = "@date_test",
+                            Value = DateTime.Now
+                        };
+                        SqlParameter isRightParameter = new SqlParameter
+                        {
+                            ParameterName = "@is_right",
+                            Value = 1
+                        };
+                        SqlParameter countRightParameter = new SqlParameter
+                        {
+                            ParameterName = "@count_right_answer",
+                            Value = countRightAnswer
+                        };
+                        sqlCommandProgressWin.Parameters.Add(userIdParameter);
+                        sqlCommandProgressWin.Parameters.Add(testIdParameter);
+                        sqlCommandProgressWin.Parameters.Add(dateTestParameter);
+                        sqlCommandProgressWin.Parameters.Add(isRightParameter);
+                        sqlCommandProgressWin.Parameters.Add(countRightParameter);
                         sqlCommandProgressWin.ExecuteNonQuery();
 
                         mainWindow.GridMain.Children.Clear();
@@ -286,15 +328,51 @@ namespace eLearning.TestsUserControl
             {
                 MessageBox.Show($"Тест не пройден. Количество правильных ответов: {countRightAnswer.ToString()} из {rightAnswers.Count.ToString()}");
 
-                string sqlExpressionProgressBad = $"INSERT INTO PROGRESS (IdUser, IdTest, NameTest, DateTest, IsRight, CountRightAnswer) VALUES ({user.idUser}, {test.idTest}, '{test.Name}', '{DateTime.Now}', 0, {countRightAnswer})";
-
+                //string sqlExpressionProgressBad = $"INSERT INTO PROGRESS_FOR_TEST(IdUser, IdTest, DateTest, IsRight, CountRightAnswer) 
+                //VALUES ({user.idUser}, {test.idTest}, '{DateTime.Now}', 0, {countRightAnswer})";
+                string addProgressBadForTest = "NO_ADD_PROGRESS_FOR_TESTS";
                 try
                 {
                     using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                     {
                         sqlConnection.Open();
 
-                        SqlCommand sqlCommandProgressBad = new SqlCommand(sqlExpressionProgressBad, sqlConnection);
+                        SqlCommand sqlCommandProgressBad = new SqlCommand(addProgressBadForTest, sqlConnection);
+                        // СДЕЛАТЬ КОМАНДУ ДЛЯ ВЫПОЛНЕНИЯ ПРОЦЕДУРЫ
+                        // ДОБАВИТЬ ВСЕ ПАРАМЕТРЫ К КОМАНДЕ
+                        sqlCommandProgressBad.CommandType = System.Data.CommandType.StoredProcedure;
+                        // ДОБАВИТЬ ВСЕ ПАРАМЕТРЫ К КОМАНДЕ
+                        SqlParameter userIdParameter = new SqlParameter
+                        {
+                            ParameterName = "@user_Id",
+                            Value = user.idUser
+                        };
+                        SqlParameter testIdParameter = new SqlParameter
+                        {
+                            ParameterName = "@test_Id",
+                            Value = test.idTest
+                        };
+                        SqlParameter dateTestParameter = new SqlParameter
+                        {
+                            ParameterName = "@date_test",
+                            Value = DateTime.Now
+                        };
+                        SqlParameter isRightParameter = new SqlParameter
+                        {
+                            ParameterName = "@is_right",
+                            Value = 0
+                        };
+                        SqlParameter countRightParameter = new SqlParameter
+                        {
+                            ParameterName = "@count_right_answer",
+                            Value = countRightAnswer
+                        };
+                        sqlCommandProgressBad.Parameters.Add(userIdParameter);
+                        sqlCommandProgressBad.Parameters.Add(testIdParameter);
+                        sqlCommandProgressBad.Parameters.Add(dateTestParameter);
+                        sqlCommandProgressBad.Parameters.Add(isRightParameter);
+                        sqlCommandProgressBad.Parameters.Add(countRightParameter);
+                        sqlCommandProgressBad.ExecuteNonQuery();
                         sqlCommandProgressBad.ExecuteNonQuery();
 
                         mainWindow.GridMain.Children.Clear();

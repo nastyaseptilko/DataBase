@@ -9,6 +9,7 @@ namespace eLearning.Classes
     public class User
     {
         public object idUser { get; set; }
+        public object idAdmin { get; set; }
         public object login { get; set; }
         public object password { get; set; }
     }

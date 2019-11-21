@@ -39,15 +39,14 @@ namespace eLearning.UserControls
             this.mainWindow = mainWindow;
             InitializeComponent();
 
-            string sqlExpressionTheme = "SELECT * FROM Themes";
-            string sqlExpressionTest = "SELECT * FROM Tests";
-
-            
+            string sqlExpressionTheme = "GET_THEME_FOR_TEST";
+            string sqlExpressionTest = "GET_TESTS_TEST ";
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommandTheme = new SqlCommand(sqlExpressionTheme, sqlConnection);
+                sqlCommandTheme.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlDataReader readerTheme = sqlCommandTheme.ExecuteReader();
 
                 if (readerTheme.HasRows)
@@ -63,6 +62,7 @@ namespace eLearning.UserControls
                 readerTheme.Close();
 
                 SqlCommand sqlCommand = new SqlCommand(sqlExpressionTest, sqlConnection);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlDataReader readerTest = sqlCommand.ExecuteReader();
 
 
@@ -72,8 +72,8 @@ namespace eLearning.UserControls
                     {
                         Classes.Test test = new Classes.Test();
                         test.idTest = readerTest.GetValue(0);
-                        test.Name = readerTest.GetValue(1).ToString();
-                        test.IdTheme = readerTest.GetValue(2);
+                        test.Name = readerTest.GetValue(2).ToString();
+                        test.IdTheme = readerTest.GetValue(3);
                         tests.Add(test);
                     }
                 }

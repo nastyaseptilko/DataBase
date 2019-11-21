@@ -42,16 +42,6 @@ namespace eLearning.Windows
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Admin admin = Admin.getInstance();
-
-            if (txbLogin.Text == admin.login && txbPassword.Password == admin.password)
-            {
-                MainWindow mainWindow = new MainWindow(admin);
-                mainWindow.Show();
-                Close();
-                return;
-            }
-
             string connectionString = DataBase.data;
             string getUsersProcedure = "GET_USERS";     // название хранимой процедуры
 
@@ -83,7 +73,9 @@ namespace eLearning.Windows
                                 if (txbLogin.Text == (string)reader.GetValue(1) && txbPassword.Password == (string)reader.GetValue(2))
                                 {
                                     flagPerson = true;
+                                    
                                     tempUser.idUser = reader.GetValue(0);
+                                    tempUser.idAdmin = reader.GetValue(3);
                                     tempUser.login = reader.GetValue(1);
                                     tempUser.password = reader.GetValue(2);
                                     break;
@@ -93,10 +85,24 @@ namespace eLearning.Windows
 
                             if (flagPerson)
                             {
-                                // Передать tempUser
-                                MainWindow mainWindow = new MainWindow(tempUser);
-                                mainWindow.Show();
-                                Close();
+                                if (tempUser.idAdmin.ToString() != "" && tempUser.idAdmin != null)
+                                {
+                                    // Создаем экземпляр админа
+                                    Admin admin = Admin.getInstance();
+                                    admin.Id = (int)tempUser.idAdmin;
+                                    admin.UserId = (int)tempUser.idUser;
+                                    admin.Login = tempUser.login.ToString();
+                                    MainWindow mainWindow = new MainWindow(admin);
+                                    mainWindow.Show();
+                                    Close();
+                                }
+                                else
+                                {
+                                    // Передать tempUser
+                                    MainWindow mainWindow = new MainWindow(tempUser);
+                                    mainWindow.Show();
+                                    Close();
+                                }
                             }
                             else
                             {

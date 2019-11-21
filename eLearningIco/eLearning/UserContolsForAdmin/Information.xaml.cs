@@ -29,15 +29,11 @@ namespace eLearning.UserContolsForAdmin
         {
             InitializeComponent();
 
-            txbUser.Text = admin.login;
+            txbUser.Text = admin.Login;
 
             string connectionString = DataBase.data;
-            string sqlExpressionUsers = $@"SELECT * FROM USERS";
-
-            string sqlExpressionThemes = $@"
-SELECT Themes.Name, Tests.Name, Questions.Question FROM Themes
-JOIN Tests ON Themes.IdTheme = Tests.IdTheme
-JOIN Questions ON Tests.IdTest = Questions.IdTest";
+            string getUsers = "GET_USERS";
+            string getInformation = "GET_INFORMATION";
 
             try
             {
@@ -45,8 +41,9 @@ JOIN Questions ON Tests.IdTest = Questions.IdTest";
                 {
                     sqlConnection.Open();
 
-                    SqlCommand sqlCommandUser = new SqlCommand(sqlExpressionUsers, sqlConnection);
-                    SqlDataReader readerUser = sqlCommandUser.ExecuteReader();
+                    SqlCommand getUsersCommand = new SqlCommand(getUsers, sqlConnection);
+                    getUsersCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader readerUser = getUsersCommand.ExecuteReader();
 
 
                     List<Classes.User> users = new List<Classes.User>();
@@ -58,6 +55,7 @@ JOIN Questions ON Tests.IdTest = Questions.IdTest";
                             user.idUser = readerUser.GetValue(0);
                             user.login = readerUser.GetValue(1);
                             user.password = readerUser.GetValue(2);
+                            user.idAdmin = readerUser.GetValue(3);
                             users.Add(user);
                         }
                     }
@@ -65,8 +63,9 @@ JOIN Questions ON Tests.IdTest = Questions.IdTest";
 
                     usersGrid.ItemsSource = users;
 
-                    SqlCommand sqlCommandTheme = new SqlCommand(sqlExpressionThemes, sqlConnection);
-                    SqlDataReader readerTheme = sqlCommandTheme.ExecuteReader();
+                    SqlCommand getInformationCommand = new SqlCommand(getInformation, sqlConnection);
+                    getInformationCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader readerTheme = getInformationCommand.ExecuteReader();
 
                     List<Theme> themes = new List<Theme>();
                     if (readerTheme.HasRows)
@@ -96,7 +95,8 @@ JOIN Questions ON Tests.IdTest = Questions.IdTest";
             try
             {
 
-
+                string deleteAnswer = "DELETE_ANSWER ";
+                string deleteQuestion = "DELETE_QUESTIONS ";
                 var data_grid = (DataGrid)sender;
                 if (Key.Delete == e.Key)
                     foreach (Theme theme in data_grid.SelectedItems)
@@ -105,14 +105,26 @@ JOIN Questions ON Tests.IdTest = Questions.IdTest";
                         {
                             sqlConnection.Open();
                             string questionName = theme.NameQuestion.ToString();
-                            SqlCommand command = new SqlCommand(
-                                $"DELETE a FROM Answer a INNER JOIN " +
-                                $"Questions q ON a.IdQuestion = q.IdQuestion " +
-                                $"WHERE q.Question = '{questionName}'", sqlConnection);
-                            command.ExecuteNonQuery();
 
-                            command.CommandText = $"DELETE FROM Questions WHERE Question = '{questionName}'";
-                            command.ExecuteNonQuery();
+                            SqlCommand deleteAnswerCommand = new SqlCommand(deleteAnswer, sqlConnection);
+                            deleteAnswerCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            SqlParameter questionParameter = new SqlParameter
+                            {
+                                ParameterName = "@question",
+                                Value= questionName
+                            };
+                            deleteAnswerCommand.Parameters.Add(questionParameter);
+                            deleteAnswerCommand.ExecuteNonQuery();
+                           
+
+
+
+                            SqlCommand deleteQuestionCommand = new SqlCommand(deleteQuestion, sqlConnection);
+                            deleteQuestionCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                            
+                            deleteQuestionCommand.Parameters.Add(questionParameter);
+                            deleteQuestionCommand.ExecuteNonQuery();
+                            //MessageBox.Show("lala");
                         }
                     }
             }

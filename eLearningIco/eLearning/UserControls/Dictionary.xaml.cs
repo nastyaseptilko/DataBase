@@ -35,8 +35,8 @@ namespace eLearning.UserControls
             InitializeComponent();
 
             string connectionString = DataBase.data;
-            string sqlExpression1 = "SELECT * FROM ThemesForDictionary";
-            string sqlExpression2 = "SELECT * FROM PodThemes";
+            string getThemeForDictionary = "GET_THEME_FOR_DICTIONARY";
+            string getPodThemes = "GET_POD_THEMES";
 
             try
             {
@@ -44,8 +44,9 @@ namespace eLearning.UserControls
                 {
                     sqlConnection.Open();
 
-                    SqlCommand sqlCommand1 = new SqlCommand(sqlExpression1, sqlConnection);
-                    SqlDataReader reader = sqlCommand1.ExecuteReader();
+                    SqlCommand getThemeForDictionaryCommand = new SqlCommand(getThemeForDictionary, sqlConnection);
+                    getThemeForDictionaryCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader reader = getThemeForDictionaryCommand.ExecuteReader();
 
                     
                     if (reader.HasRows)
@@ -55,8 +56,8 @@ namespace eLearning.UserControls
                         {
                             Classes.ThemesForDictionary themesForDictionary = new Classes.ThemesForDictionary();
                             themesForDictionary.IdTheme = reader.GetValue(0);
-                            themesForDictionary.IdAdmin = reader.GetValue(0);
-                            themesForDictionary.NameThemeForDictionary = reader.GetValue(1);
+                            themesForDictionary.IdAdmin = reader.GetValue(1);
+                            themesForDictionary.NameThemeForDictionary = reader.GetValue(2);
                             listThemseForDictionaries.Add(themesForDictionary);
                         }
                     }
@@ -82,8 +83,9 @@ namespace eLearning.UserControls
                     }
                     /////////////////////////////////////////////////////////////////
 
-                    SqlCommand sqlCommand2 = new SqlCommand(sqlExpression2, sqlConnection);
-                    SqlDataReader reader2 = sqlCommand2.ExecuteReader();
+                    SqlCommand getPodThemesCommand = new SqlCommand(getPodThemes, sqlConnection);
+                    getPodThemesCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader reader2 = getPodThemesCommand.ExecuteReader();
 
 
                     if (reader2.HasRows)

@@ -9,6 +9,7 @@ namespace eLearning.Classes
     public class Test
     {
         public object idTest { get; set; }
+        public object idAdmin { get; set; }
         public string Name { get; set; }
         public object IdTheme{ get; set; }
         //public object IdThemeFromTheme { get; set; }
