@@ -258,6 +258,23 @@ namespace eLearning.TestsUserControl
             {
                 try
                 {
+                    /*List<Dictionary> mixedDictionaries = dictionaries.OrderBy(d => Guid.NewGuid()).ToList();
+                    txbAnswer1.Text = mixedDictionaries[0].RussianWord.ToString();
+                    word1.EnglishWord = mixedDictionaries[0].EnglishWord.ToString();
+                    word1.RussianWord = mixedDictionaries[0].RussianWord.ToString();
+
+                    txbAnswer2.Text = mixedDictionaries[1].RussianWord.ToString();
+                    word2.EnglishWord = mixedDictionaries[1].EnglishWord.ToString();
+                    word2.RussianWord = mixedDictionaries[1].RussianWord.ToString();
+
+                    txbAnswer3.Text = mixedDictionaries[2].RussianWord.ToString();
+                    word3.EnglishWord = mixedDictionaries[2].EnglishWord.ToString();
+                    word3.RussianWord = mixedDictionaries[2].RussianWord.ToString();
+
+                    txbAnswer4.Text = mixedDictionaries[3].RussianWord.ToString();
+                    word4.EnglishWord = mixedDictionaries[3].EnglishWord.ToString();
+                    word4.RussianWord = mixedDictionaries[3].RussianWord.ToString();*/
+
                     Random random1 = new Random();
                     int i1 = random1.Next(1, 8);
                     txbAnswer1.Text = dictionaries[i1 - 1].RussianWord.ToString();
@@ -428,46 +445,46 @@ namespace eLearning.TestsUserControl
                             SqlCommand progressDictionaryCommand = new SqlCommand(progressForDictionary, sqlConnection);
 
                             progressDictionaryCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                            SqlParameter userIdParameter = new SqlParameter
+                            SqlParameter usersIdParameter = new SqlParameter
                             {
                                 ParameterName = "@user_Id",
                                 Value = user.idUser
                             };
-                            SqlParameter themeIdDictionary = new SqlParameter
+                            SqlParameter themesIdDictionary = new SqlParameter
                             {
                                 ParameterName = "@theme_Id_Dictionary ",
                                 Value = ThemeDictionaryId
 
                             };
-                            SqlParameter dateTestParameter = new SqlParameter
+                            SqlParameter datesTestParameter = new SqlParameter
                             {
                                 ParameterName = "@date_test",
                                 Value = DateTime.Now
                             };
 
-                            SqlParameter isRightParameter = new SqlParameter
+                            SqlParameter isRightsParameter = new SqlParameter
                             {
                                 ParameterName = "@is_right",
                                 Value = flagWinTest
 
                             };
-                            SqlParameter countRightAnswersParameter = new SqlParameter
+                            SqlParameter countRightsAnswersParameter = new SqlParameter
                             {
                                 ParameterName = "@count_right_answer ",
                                 Value = countRightAnswer
                             };
-                            SqlParameter countQuestionParameter = new SqlParameter
+                            SqlParameter countQuestionsParameter = new SqlParameter
                             {
                                 ParameterName = "@count_question",
                                 Value = dictionaries.Count - 2
                             };
 
-                            progressDictionaryCommand.Parameters.Add(userIdParameter);
-                            progressDictionaryCommand.Parameters.Add(themeIdDictionary);
-                            progressDictionaryCommand.Parameters.Add(dateTestParameter);
-                            progressDictionaryCommand.Parameters.Add(isRightParameter);
-                            progressDictionaryCommand.Parameters.Add(countRightAnswersParameter);
-                            progressDictionaryCommand.Parameters.Add(countQuestionParameter);
+                            progressDictionaryCommand.Parameters.Add(usersIdParameter);
+                            progressDictionaryCommand.Parameters.Add(themesIdDictionary);
+                            progressDictionaryCommand.Parameters.Add(datesTestParameter);
+                            progressDictionaryCommand.Parameters.Add(isRightsParameter);
+                            progressDictionaryCommand.Parameters.Add(countRightsAnswersParameter);
+                            progressDictionaryCommand.Parameters.Add(countQuestionsParameter);
 
 
                             progressDictionaryCommand.ExecuteNonQuery();

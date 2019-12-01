@@ -121,8 +121,12 @@ namespace eLearning.UserContolsForAdmin
 
                             SqlCommand deleteQuestionCommand = new SqlCommand(deleteQuestion, sqlConnection);
                             deleteQuestionCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                            
-                            deleteQuestionCommand.Parameters.Add(questionParameter);
+                            SqlParameter questionsParameter = new SqlParameter
+                            {
+                                ParameterName = "@question",
+                                Value = questionName
+                            };
+                            deleteQuestionCommand.Parameters.Add(questionsParameter);
                             deleteQuestionCommand.ExecuteNonQuery();
                             //MessageBox.Show("lala");
                         }

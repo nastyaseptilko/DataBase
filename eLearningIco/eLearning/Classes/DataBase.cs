@@ -11,13 +11,31 @@ using System.Text.RegularExpressions;
 namespace eLearning.Classes
 {
     public static class DataBase
-    {
-        public static string data = @"Data Source=.\SQLEXPRESS;Initial Catalog=eLEARNING; Integrated Security=True";
+    {   
+        public static string UserConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=eLEARNING; Integrated Security=False;User ID=Default_User;Password=password";
+        public static string AdminConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=eLEARNING; Integrated Security=False;User ID=Admin_User;Password=password";
+        public static string DefaultConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=eLEARNING; Integrated Security=True";
+
+        //создать строку коннекшн админ и коннекшен юзер
+        public static string data = DefaultConnectionString;
+
+
+        public static void ApplyAdminPrivileges()
+        {
+            data = AdminConnectionString;
+        }
+
+        public static void ApplyUserPrivileges()
+        {
+            data = UserConnectionString;
+        }
+
 
         private const string ConnectionStringWithoutDb = @"Data Source=.\SQLEXPRESS; Integrated Security=True";
-        private const string CREATE_DB_QUERY = "Use master; CREATE DATABASE SAA_MyBase;";
+        private const string CREATE_DB_QUERY = "Use master; CREATE DATABASE SAA_DB;";
         private static readonly string SQL_SCRIPT_FILE_PATH = Directory.GetCurrentDirectory() + @"\CreatingDbScript.sql";
 
+        //созданы ли таблицы? проверка
         private static bool IsDbCreated = false;
 
         public static void CreateDb()

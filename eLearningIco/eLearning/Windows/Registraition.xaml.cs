@@ -96,13 +96,13 @@ namespace eLearning.Windows
                             SqlParameter loginParameter = new SqlParameter
                             {
                                 ParameterName = "@login",
-                                Value = txbLogin.Text
+                                Value =txbLogin.Text
                             };
 
                             SqlParameter passwordParameter = new SqlParameter
                             {
                                 ParameterName = "@password",
-                                Value = txbPassword1.Password
+                                Value = User.getHash(txbPassword1.Password)
                             };
 
                             // Добавляем парраметры

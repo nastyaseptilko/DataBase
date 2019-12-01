@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -51,6 +52,8 @@ namespace eLearning.Windows
                 {
                     sqlConnection.Open();
 
+
+
                     if (txbLogin.Text != string.Empty)
                     {
                         // В параметре название процедуры и экземпляр коннекшна
@@ -70,7 +73,7 @@ namespace eLearning.Windows
 
                             while (reader.Read())
                             {
-                                if (txbLogin.Text == (string)reader.GetValue(1) && txbPassword.Password == (string)reader.GetValue(2))
+                                if (txbLogin.Text == (string)reader.GetValue(1) && User.getHash(txbPassword.Password) == (string)reader.GetValue(2))
                                 {
                                     flagPerson = true;
                                     
@@ -82,11 +85,12 @@ namespace eLearning.Windows
                                 }
                             }
                             reader.Close();
-
+                           
                             if (flagPerson)
                             {
                                 if (tempUser.idAdmin.ToString() != "" && tempUser.idAdmin != null)
                                 {
+                                    DataBase.ApplyAdminPrivileges();
                                     // Создаем экземпляр админа
                                     Admin admin = Admin.getInstance();
                                     admin.Id = (int)tempUser.idAdmin;
@@ -98,12 +102,14 @@ namespace eLearning.Windows
                                 }
                                 else
                                 {
+                                    DataBase.ApplyUserPrivileges();
                                     // Передать tempUser
                                     MainWindow mainWindow = new MainWindow(tempUser);
                                     mainWindow.Show();
                                     Close();
                                 }
                             }
+                            
                             else
                             {
                                 MessageBox.Show("Такого пользователя нет!");
@@ -132,5 +138,9 @@ namespace eLearning.Windows
                 MessageBox.Show(ex.Message);
             }
         }
+        
+
+
     }
+
 }

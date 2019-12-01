@@ -97,13 +97,13 @@ CREATE TABLE WORDS
 --AS
 --BEGIN
 --INSERT INTO [THEMES_FOR_DICTIONARY] ([Theme_Id_Dictionary],[Admin_Id], [Name_Theme_For_Dictionary])
---VALUES (1,1, 'Знакомство. Общение'),
---	   (2,1, 'Дом'),
---	   (3,1, 'Город'),
---	   (4,1, 'Еда');
+--VALUES (1,3, 'Знакомство. Общение'),
+--	   (2,3, 'Дом'),
+--	   (3,3, 'Город'),
+--	   (4,3, 'Еда');
 --END
 --EXEC THEMES_DICTIONARY;
-
+--drop procedure  THEMES_DICTIONARY
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 USE eLEARNING;
 
@@ -129,6 +129,7 @@ EXEC ADD_USERS 'qwd', 'qwd';
 -----
 
 
+
 -----
 GO
 CREATE PROCEDURE NO_PASSED_FOR_TEST 
@@ -146,7 +147,8 @@ EXEC NO_PASSED_FOR_TEST '4';
 -----
 
 
-drop procedure NO_PASSED_FOR_TEST
+
+
 -----
 GO
 CREATE PROCEDURE PASSED_FOR_TEST 
@@ -180,7 +182,7 @@ EXEC NO_PASSED_FOR_DICTIONARY '4' ;
 ------
 
 
-drop procedure NO_PASSED_FOR_DICTIONARY
+
 -----
 GO
 CREATE PROCEDURE PASSED_FOR_DICTIONARY 
@@ -196,6 +198,7 @@ EXEC PASSED_FOR_DICTIONARY  '4' ;
 -----
 
 
+
 -----
 GO
 CREATE PROCEDURE GET_THEME_FOR_TEST AS
@@ -203,6 +206,15 @@ CREATE PROCEDURE GET_THEME_FOR_TEST AS
 EXEC GET_THEME_FOR_TEST ;
 ------
 
+
+
+
+-----
+GO
+CREATE PROCEDURE GET_ADMINS AS
+	SELECT * FROM ADMINS
+EXEC GET_ADMINS;
+-----
 
 
 -----
@@ -234,10 +246,10 @@ END
 EXEC GET_TESTS_FOR_TEST '1';
 -----
 
-select * from POD_THEMES
 
 
------
+
+-----!!!!!!!!!!!!!!
 GO 
 CREATE PROCEDURE CREATE_TESTS AS
 SELECT THEMES_FOR_TESTS.Name_Theme, TESTS.Name_Test FROM TESTS
@@ -260,10 +272,11 @@ CREATE PROCEDURE Add_TESTS
 				@theme_Id int
 AS
 BEGIN 
-INSERT INTO TESTS([Name_Test], Admin_Id, [Theme_Id]) VALUES (@name_test, @admin_id, @theme_Id);
+INSERT INTO TESTS([Name_Test], [Admin_Id], [Theme_Id]) VALUES (@name_test, @admin_id, @theme_Id);
 END
-EXEC  Add_TESTS 'Неопределенный и определенный артикль','1';
+EXEC  Add_TESTS 'TEST',1, 4;
 ------
+
 
 
 
@@ -281,10 +294,8 @@ EXEC Add_QUESTIONS '1','1','Какой артикль здесь применить: __ apple';
 -----
 
 
+--DELETE TESTS WHERE Test_Id = 22 ;
 
-
-select * from ANSWERS_FOR_TESTS;
-select * from TESTS;
 -----
 GO
 --В Коде 3 инсерта !!!!!!!!!!!!
@@ -298,7 +309,7 @@ INSERT INTO ANSWERS_FOR_TESTS([Answer], [Is_Right], [Question_Id]) VALUES (@answ
 END
 EXEC Add_ANSWER 'yes','1','1';
 -----
---drop procedure Add_ANSWER_ONE ;
+
 
 
 
@@ -324,7 +335,7 @@ CREATE PROCEDURE GET_INFORMATION AS
 BEGIN
 SELECT THEMES_FOR_TESTS.Name_Theme, TESTS.Name_Test, QUESTIONS_FOR_TESTS.Question FROM THEMES_FOR_TESTS
 						JOIN TESTS ON THEMES_FOR_TESTS.Theme_Id = TESTS.Theme_Id
-						JOIN QUESTIONS_FOR_TESTS ON TESTS.Test_Id = QUESTIONS_FOR_TESTS.Test_Id
+						LEFT JOIN QUESTIONS_FOR_TESTS ON TESTS.Test_Id = QUESTIONS_FOR_TESTS.Test_Id
 END
 EXEC GET_INFORMATION;
 ------
@@ -332,9 +343,6 @@ EXEC GET_INFORMATION;
 
 
 
-
-SELECT * FROM ANSWERS_FOR_TESTS;
-SELECT * FROM QUESTIONS_FOR_TESTS;
 -------
 GO
 CREATE PROCEDURE DELETE_ANSWER 
@@ -359,8 +367,10 @@ AS
 BEGIN
 DELETE FROM QUESTIONS_FOR_TESTS WHERE Question = @question;
 END
-EXEC DELETE_QUESTIONS 'question5';
+EXEC DELETE_QUESTIONS 'question0';
 -----
+
+
 
  
 ------
@@ -373,8 +383,9 @@ EXEC DELETE_QUESTIONS 'question5';
             join TESTS ON QUESTIONS_FOR_TESTS.Test_Id = TESTS.Test_Id
             where TESTS.Test_Id = @test_Id;
 END
-EXEC TEST_ARTICLES_TESTS '20';
+EXEC TEST_ARTICLES_TESTS '25';
 ------
+
 
 
 
@@ -430,8 +441,6 @@ EXEC ADD_PROGRESS_FOR_TESTS 4, 18, '', 0, 0;
 
 
 
-select * from PROGRESS_FOR_TEST;
-select * from TESTS;
 
 ------
 GO
@@ -474,7 +483,8 @@ EXEC GET_POD_THEMES;
 ------
 
 
-select * from THEMES_FOR_DICTIONARY;
+
+
 
 -------
 GO 
@@ -493,7 +503,7 @@ SELECT Words.Word_Id, Words.English_Word, Words.Russian_Word
 END
 EXEC TEST_DICTIONARY 4;
 -------
-
+select * from  POD_THEMES
 
 --Добавление слов в словарь
 INSERT INTO [POD_THEMES] ([Pod_Theme_Id], [Theme_Id_Dictionary], [Pod_Theme_Name])
@@ -592,16 +602,117 @@ INSERT INTO PROGRESS_FOR_DICTIONARY(User_Id, Theme_Id_Dictionary ,Date_Test, Is_
 END
 EXEC ADD_PROGRESS_FOR_DICTIONARY 4, 1, '', 0, 4, 5;
 -----
+select * from admins
+
+--ИМПОРТ И ЭКСПОРТ В Excel
+
+GO
+CREATE PROC [dbo].[ExportToExcel]
+AS 
+SET XACT_ABORT, NOCOUNT ON;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\DB.xlsx;', 
+
+'SELECT * FROM [Users$]') select * from eLEARNING.dbo.USERS;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [Admins$]') select * from eLEARNING.dbo.ADMINS;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [AnswersForTests$]') select * from eLEARNING.dbo.ANSWERS_FOR_TESTS;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [PodThemes$]') select * from eLEARNING.dbo.POD_THEMES;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;',  
+
+'SELECT * FROM [ProgressForDictionary$]') select * from eLEARNING.dbo.PROGRESS_FOR_DICTIONARY;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [ProgressForTest$]') select * from eLEARNING.dbo.PROGRESS_FOR_TEST;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [QuestionsForTests$]') select * from eLEARNING.dbo.QUESTIONS_FOR_TESTS;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [Tests$]') select * from eLEARNING.dbo.TESTS;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [ThemesForDictionary$]') select * from eLEARNING.dbo.THEMES_FOR_DICTIONARY;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+
+'SELECT * FROM [ThemesForTests$]') select * from eLEARNING.dbo.THEMES_FOR_TESTS;
+insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
+'Excel 12.0;Database=D:\eLearning.xlsx;', 
+'SELECT * FROM [Words$]') select * from eLEARNING.dbo.WORDS;
+
+
+
+--Import to xml
+INSERT INTO USERS (Login, Password)
+SELECT
+   MY_XML.Client.query('Login').value('.', 'NVARCHAR(30)'),
+   MY_XML.Client.query('Password').value('.', 'NVARCHAR(15)')
+   
+FROM (SELECT CAST(MY_XML AS xml)
+      FROM OPENROWSET(BULK 'D:\Учёба\3 curs\DB\КП\Users.xml', SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
+      CROSS APPLY MY_XML.nodes('Users/User') AS MY_XML (Client);
+
+
+select * from users;
+delete  from users where User_Id > 4;
+
+--Export to xml
+
+SELECT * FROM USERS
+for XML PATH('User'), Root('Users')
+
+CREATE LOGIN [Admin_User]
+    WITH PASSWORD=N'password',
+    DEFAULT_DATABASE=[eLEARNING],
+    DEFAULT_LANGUAGE=[русский],
+    CHECK_EXPIRATION=OFF,
+    CHECK_POLICY=ON;
+GO
 
 
 
 
-select * from PROGRESS_FOR_DICTIONARY;
-select * from USERS;
-select * from THEMES_FOR_DICTIONARY;
+USE eLEARNING
+GO
+CREATE USER [Admin_User] FOR LOGIN [Admin_User] WITH DEFAULT_SCHEMA=[dbo]
+GO
+-- Выдать таким образом права
+GRANT EXECUTE TO [ADMIN_ROLE];
+GRANT EXECUTE TO [USER_ROLE];
+GO
 
 
-insert into ADMINS values(2);
+CREATE TRIGGER Question_Removed
+ON QUESTIONS_FOR_TESTS AFTER DELETE
+AS
+BEGIN
+	DELETE p FROM PROGRESS_FOR_TEST p
+		WHERE 0 = (SELECT COUNT(*) FROM QUESTIONS_FOR_TESTS q WHERE q.Test_Id = p.Test_Id);
 
-select * from ADMINS;
-delete from ADMINS where Admin_Id = 2;
+	DELETE t FROM TESTS t
+		WHERE 0 = (SELECT COUNT(*) FROM QUESTIONS_FOR_TESTS q WHERE q.Test_Id = t.Test_Id);
+END
+
+
+
+
+
+
+
+EXEC GET_INFORMATION;
+SELECT * FROM PROGRESS_FOR_TEST p JOIN TESTS t ON t.Test_Id = p.Test_Id;
+

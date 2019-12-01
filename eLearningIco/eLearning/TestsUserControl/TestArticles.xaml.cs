@@ -153,8 +153,7 @@ namespace eLearning.TestsUserControl
                         MessageBox.Show(ex.Message);
                     }
 
-
-
+                    answers = answers.OrderBy(a => Guid.NewGuid()).ToList();
                     for (int j = 0; j < answers.Count; j++)
                     {
                         RadioButton radioButton1 = new RadioButton();
@@ -177,7 +176,7 @@ namespace eLearning.TestsUserControl
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
 
         private void Close()
         {
@@ -271,8 +270,6 @@ namespace eLearning.TestsUserControl
             {
                 MessageBox.Show("Тест пройден. Просмотрите вкладку достижений!");
 
-                //string sqlExpressionProgressWin = $"INSERT INTO PROGRESS_FOR_TEST(IdUser, IdTest, DateTest, IsRight, CountRightAnswer) VALUES 
-                //({user.idUser}, {test.idTest}, '{DateTime.Now}', 1, {countRightAnswer})";
                 string addProgressForTests = "ADD_PROGRESS_FOR_TESTS";
                 try
                 {
@@ -282,7 +279,6 @@ namespace eLearning.TestsUserControl
 
                         SqlCommand sqlCommandProgressWin = new SqlCommand(addProgressForTests, sqlConnection);
                         sqlCommandProgressWin.CommandType = System.Data.CommandType.StoredProcedure;
-                        // ДОБАВИТЬ ВСЕ ПАРАМЕТРЫ К КОМАНДЕ
                         SqlParameter userIdParameter = new SqlParameter
                         {
                             ParameterName = "@user_Id",
@@ -328,8 +324,6 @@ namespace eLearning.TestsUserControl
             {
                 MessageBox.Show($"Тест не пройден. Количество правильных ответов: {countRightAnswer.ToString()} из {rightAnswers.Count.ToString()}");
 
-                //string sqlExpressionProgressBad = $"INSERT INTO PROGRESS_FOR_TEST(IdUser, IdTest, DateTest, IsRight, CountRightAnswer) 
-                //VALUES ({user.idUser}, {test.idTest}, '{DateTime.Now}', 0, {countRightAnswer})";
                 string addProgressBadForTest = "NO_ADD_PROGRESS_FOR_TESTS";
                 try
                 {
@@ -338,10 +332,7 @@ namespace eLearning.TestsUserControl
                         sqlConnection.Open();
 
                         SqlCommand sqlCommandProgressBad = new SqlCommand(addProgressBadForTest, sqlConnection);
-                        // СДЕЛАТЬ КОМАНДУ ДЛЯ ВЫПОЛНЕНИЯ ПРОЦЕДУРЫ
-                        // ДОБАВИТЬ ВСЕ ПАРАМЕТРЫ К КОМАНДЕ
                         sqlCommandProgressBad.CommandType = System.Data.CommandType.StoredProcedure;
-                        // ДОБАВИТЬ ВСЕ ПАРАМЕТРЫ К КОМАНДЕ
                         SqlParameter userIdParameter = new SqlParameter
                         {
                             ParameterName = "@user_Id",
@@ -372,7 +363,6 @@ namespace eLearning.TestsUserControl
                         sqlCommandProgressBad.Parameters.Add(dateTestParameter);
                         sqlCommandProgressBad.Parameters.Add(isRightParameter);
                         sqlCommandProgressBad.Parameters.Add(countRightParameter);
-                        sqlCommandProgressBad.ExecuteNonQuery();
                         sqlCommandProgressBad.ExecuteNonQuery();
 
                         mainWindow.GridMain.Children.Clear();

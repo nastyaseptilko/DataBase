@@ -530,14 +530,16 @@ namespace eLearning.UserContolsForAdmin
                                         addAnswerCommandOne.Parameters.Add(answerParameter);
                                         addAnswerCommandOne.Parameters.Add(isRightParameter);
                                         addAnswerCommandOne.Parameters.Add(questionIdParameter);
+
                                         addAnswerCommandOne.ExecuteNonQuery();
 
                                         answerParameter.Value = listAnswerInDB[1].SomeAnswer;
                                         isRightParameter.Value = 0;
+
                                         addAnswerCommandOne.ExecuteNonQuery();
                                         
-
                                         answerParameter.Value = listAnswerInDB[2].SomeAnswer;
+
                                         addAnswerCommandOne.ExecuteNonQuery();
                                         
                                         transaction.Commit();
