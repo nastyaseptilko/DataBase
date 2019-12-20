@@ -1,5 +1,5 @@
 CREATE DATABASE eLEARNING;
- USE eLEARNING;
+USE eLEARNING;
 
 CREATE TABLE USERS(
 	[User_Id] int PRIMARY KEY IDENTITY,
@@ -249,21 +249,6 @@ EXEC GET_TESTS_FOR_TEST '1';
 
 
 
------!!!!!!!!!!!!!!
-GO 
-CREATE PROCEDURE CREATE_TESTS AS
-SELECT THEMES_FOR_TESTS.Name_Theme, TESTS.Name_Test FROM TESTS
-                                       JOIN THEMES_FOR_TESTS ON TESTS.Theme_Id = THEMES_FOR_TESTS.Theme_Id
-                                       WHERE THEMES_FOR_TESTS.Name_Theme = '{listThemes.SelectedItem.ToString()}';
-EXEC CREATE_TESTS;
-
-
-GO
-CREATE PROCEDURE Add_THEME AS 
-INSERT INTO THEMES_FOR_TESTS([Name_Theme]) VALUES ('{themeInBD.NameTheme.ToString()}');
-EXEC Add_THEME;
-
-
 ------
 GO
 CREATE PROCEDURE Add_TESTS 
@@ -294,11 +279,10 @@ EXEC Add_QUESTIONS '1','1','Какой артикль здесь применить: __ apple';
 -----
 
 
---DELETE TESTS WHERE Test_Id = 22 ;
+
 
 -----
 GO
---В Коде 3 инсерта !!!!!!!!!!!!
 CREATE PROCEDURE Add_ANSWER 
 				@answer NVARCHAR(50),
 				@is_right bit,
@@ -422,8 +406,11 @@ EXEC TEST_ARTICLES_QUESTIONS 'test0';
 
 
 
+
+
+-----
 GO
---ТЕСТ ПРОЙДЕН !!!!!!!!!!!!!!!!!!!!!!
+--ТЕСТ ПРОЙДЕН 
 CREATE PROCEDURE ADD_PROGRESS_FOR_TESTS 
 					@user_Id int,
 					@test_Id int,
@@ -488,7 +475,6 @@ EXEC GET_POD_THEMES;
 
 -------
 GO 
---ТУТ ОН БЕРЕТ ИЗ БД, А МНЕ НАДО ЧТОБЫ МЫ ЗАПИСЫВАЛИ ----insert для самих слов
 CREATE PROCEDURE TEST_DICTIONARY
 					@theme_id int,
 					@podtheme_id int
@@ -503,7 +489,13 @@ SELECT Words.Word_Id, Words.English_Word, Words.Russian_Word
 END
 EXEC TEST_DICTIONARY 4;
 -------
-select * from  POD_THEMES
+
+-- Добавление тем для тестов
+INSERT INTO [THEMES_FOR_TESTS]
+	VALUES 	('Артикли'),
+			('Времена'),
+			('Прилагательные'),
+			('Существительные');
 
 --Добавление слов в словарь
 INSERT INTO [POD_THEMES] ([Pod_Theme_Id], [Theme_Id_Dictionary], [Pod_Theme_Name])
@@ -584,9 +576,9 @@ VALUES
 	   (56, 8, 'peach', 'персик');
 
 
-
+--------
 GO
---ПРОГРЕСС ПО СЛОВАРЮ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+--ПРОГРЕСС ПО СЛОВАРЮ
 CREATE PROCEDURE ADD_PROGRESS_FOR_DICTIONARY 
 							@user_Id int,
 							@theme_Id_Dictionary int,
@@ -602,99 +594,86 @@ INSERT INTO PROGRESS_FOR_DICTIONARY(User_Id, Theme_Id_Dictionary ,Date_Test, Is_
 END
 EXEC ADD_PROGRESS_FOR_DICTIONARY 4, 1, '', 0, 4, 5;
 -----
-select * from admins
-
---ИМПОРТ И ЭКСПОРТ В Excel
-
-GO
-CREATE PROC [dbo].[ExportToExcel]
-AS 
-SET XACT_ABORT, NOCOUNT ON;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\DB.xlsx;', 
-
-'SELECT * FROM [Users$]') select * from eLEARNING.dbo.USERS;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [Admins$]') select * from eLEARNING.dbo.ADMINS;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [AnswersForTests$]') select * from eLEARNING.dbo.ANSWERS_FOR_TESTS;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [PodThemes$]') select * from eLEARNING.dbo.POD_THEMES;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;',  
-
-'SELECT * FROM [ProgressForDictionary$]') select * from eLEARNING.dbo.PROGRESS_FOR_DICTIONARY;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [ProgressForTest$]') select * from eLEARNING.dbo.PROGRESS_FOR_TEST;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [QuestionsForTests$]') select * from eLEARNING.dbo.QUESTIONS_FOR_TESTS;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [Tests$]') select * from eLEARNING.dbo.TESTS;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [ThemesForDictionary$]') select * from eLEARNING.dbo.THEMES_FOR_DICTIONARY;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-
-'SELECT * FROM [ThemesForTests$]') select * from eLEARNING.dbo.THEMES_FOR_TESTS;
-insert into OPENROWSET('Microsoft.ACE.OLEDB.12.0', 
-'Excel 12.0;Database=D:\eLearning.xlsx;', 
-'SELECT * FROM [Words$]') select * from eLEARNING.dbo.WORDS;
 
 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Import to xml
-INSERT INTO USERS (Login, Password)
+GO
+CREATE PROCEDURE Import_To_XML
+AS
+BEGIN
+INSERT INTO TESTS(Admin_Id, Name_Test, Theme_Id)
 SELECT
-   MY_XML.Client.query('Login').value('.', 'NVARCHAR(30)'),
-   MY_XML.Client.query('Password').value('.', 'NVARCHAR(15)')
+   MY_XML.Test.query('Admin_Id').value('.', 'int'),
+   MY_XML.Test.query('Name_Test').value('.', 'NVARCHAR(50)'),
+   MY_XML.Test.query('Theme_Id').value('.', 'int')
    
 FROM (SELECT CAST(MY_XML AS xml)
-      FROM OPENROWSET(BULK 'D:\Учёба\3 curs\DB\КП\Users.xml', SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
-      CROSS APPLY MY_XML.nodes('Users/User') AS MY_XML (Client);
+      FROM OPENROWSET(BULK 'D:\Учёба\3 curs\DB\КП\Tests.xml', SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
+      CROSS APPLY MY_XML.nodes('Tests/Test') AS MY_XML (Test);
+END
+EXEC Import_To_XML;
 
 
-select * from users;
-delete  from users where User_Id > 4;
 
 --Export to xml
+GO
+CREATE PROCEDURE Export_To_XML
+AS
+BEGIN
+SELECT * FROM TESTS
+for XML PATH('Test'), Root('Tests')
+END
+EXEC Export_To_XML;
 
-SELECT * FROM USERS
-for XML PATH('User'), Root('Users')
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
+--Создание пользователей
 CREATE LOGIN [Admin_User]
     WITH PASSWORD=N'password',
     DEFAULT_DATABASE=[eLEARNING],
     DEFAULT_LANGUAGE=[русский],
     CHECK_EXPIRATION=OFF,
     CHECK_POLICY=ON;
+
+CREATE LOGIN [Default_User]
+    WITH PASSWORD=N'password',
+    DEFAULT_DATABASE=[eLEARNING],
+    DEFAULT_LANGUAGE=[русский],
+    CHECK_EXPIRATION=OFF,
+    CHECK_POLICY=ON;
+
+
+GO
+CREATE USER [Admin_User] FOR LOGIN [Admin_User] WITH DEFAULT_SCHEMA=[dbo];
+CREATE USER [Default_User] FOR LOGIN [Default_User] WITH DEFAULT_SCHEMA=[dbo];
 GO
 
+CREATE ROLE ADMIN_ROLE AUTHORIZATION db_owner;
+CREATE ROLE USER_ROLE AUTHORIZATION db_owner;
 
-
-
-USE eLEARNING
-GO
-CREATE USER [Admin_User] FOR LOGIN [Admin_User] WITH DEFAULT_SCHEMA=[dbo]
-GO
--- Выдать таким образом права
+-- Выдать права
 GRANT EXECUTE TO [ADMIN_ROLE];
+GRANT SELECT TO [ADMIN_ROLE];
+GRANT DELETE TO [ADMIN_ROLE];
+GRANT INSERT TO [ADMIN_ROLE];
+GRANT ALTER TO [ADMIN_ROLE];
+GRANT UPDATE TO [ADMIN_ROLE];
+
+
 GRANT EXECUTE TO [USER_ROLE];
+GRANT SELECT TO [USER_ROLE];
+
+ALTER ROLE ADMIN_ROLE ADD MEMBER [Admin_User];
+ALTER ROLE USER_ROLE ADD MEMBER [Default_User];
+
+
 GO
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TRIGGER Question_Removed
 ON QUESTIONS_FOR_TESTS AFTER DELETE
@@ -706,13 +685,19 @@ BEGIN
 	DELETE t FROM TESTS t
 		WHERE 0 = (SELECT COUNT(*) FROM QUESTIONS_FOR_TESTS q WHERE q.Test_Id = t.Test_Id);
 END
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
+GO
+-- Настроить сервер для возможности аутентификации с помощью логина и пароля
+USE master;
 
+-- Дать админу права на добавление множества записей из xml файла
+GRANT ADMINISTER BULK OPERATIONS TO [Admin_User];
 
+EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE', 
+                          N'Software\Microsoft\MSSQLServer\MSSQLServer',      
+                          N'LoginMode', REG_DWORD, 1
+GO
 
-
-
-
-EXEC GET_INFORMATION;
-SELECT * FROM PROGRESS_FOR_TEST p JOIN TESTS t ON t.Test_Id = p.Test_Id;
-
+use eLEARNING
+select * from admins;

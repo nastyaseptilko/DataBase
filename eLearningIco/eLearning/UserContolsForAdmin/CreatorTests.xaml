@@ -27,15 +27,25 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,10,10.2,9.8" Grid.ColumnSpan="2">
-                  <TextBlock Text="1. Добавить тему" HorizontalAlignment="Center" FontSize="30" FontFamily="Edrima"/>
+                    <!-- Панель кнопок ипорта и экспорта -->
+                    <Grid Margin="0, 0, 0, 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Content="Скачать" Grid.Column="0" Width="300" Background="DeepSkyBlue" Click="DownloadTests_Click"/>
+                        <Button Content="Загрузить" Grid.Column="1"  Width="300" Background="LightGreen" Click="UploadTests_Click"/>
+                    </Grid>
+                    <TextBlock Text="1. Добавить тему" HorizontalAlignment="Center" FontSize="30" FontFamily="Edrima"/>
 
 
-                    <ComboBox x:Name="txbTheme" Foreground="Black" HorizontalAlignment="Center" Width="400" Height="30" BorderBrush="Gray" Margin="10, 20">
+                    <!--<ComboBox x:Name="txbTheme" Foreground="Black" HorizontalAlignment="Center" Width="400" Height="30" BorderBrush="Gray" Margin="10, 20">
                         <ComboBoxItem>Времена</ComboBoxItem>
                         <ComboBoxItem>Артикли</ComboBoxItem>
                         <ComboBoxItem>Существительные</ComboBoxItem>
                         <ComboBoxItem>Прилагательные</ComboBoxItem>
-                    </ComboBox>
+                    </ComboBox>-->
 
 
                     <!--
@@ -43,7 +53,7 @@
                         <TextBlock Text="Добавить" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 10"/>
                         </Button>-->
 
-                        <Border Height="200" Margin="10 5" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                    <Border Height="130" Margin="10 5" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
                         <ListView x:Name="listThemes" Foreground="Black"/>
                     </Border>
 

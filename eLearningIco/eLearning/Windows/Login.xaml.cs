@@ -26,13 +26,9 @@ namespace eLearning.Windows
         public Login()
         {
             InitializeComponent();
-            DataBase.CreateDb();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void btnClose_Click(object sender, RoutedEventArgs e) => Close();
 
         private void formRegister_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -76,7 +72,7 @@ namespace eLearning.Windows
                                 if (txbLogin.Text == (string)reader.GetValue(1) && User.getHash(txbPassword.Password) == (string)reader.GetValue(2))
                                 {
                                     flagPerson = true;
-                                    
+
                                     tempUser.idUser = reader.GetValue(0);
                                     tempUser.idAdmin = reader.GetValue(3);
                                     tempUser.login = reader.GetValue(1);
@@ -85,7 +81,7 @@ namespace eLearning.Windows
                                 }
                             }
                             reader.Close();
-                           
+
                             if (flagPerson)
                             {
                                 if (tempUser.idAdmin.ToString() != "" && tempUser.idAdmin != null)
@@ -109,7 +105,7 @@ namespace eLearning.Windows
                                     Close();
                                 }
                             }
-                            
+
                             else
                             {
                                 MessageBox.Show("Такого пользователя нет!");
@@ -138,9 +134,5 @@ namespace eLearning.Windows
                 MessageBox.Show(ex.Message);
             }
         }
-        
-
-
     }
-
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace eLearning.UserContolsForAdmin
 {
@@ -31,14 +34,14 @@ namespace eLearning.UserContolsForAdmin
         Classes.Test testInBD = new Classes.Test();
         Classes.Question questionInDB = new Classes.Question();
         List<Classes.Answer> listAnswerInDB;
-        
+
 
         public CreatorTests()
         {
             InitializeComponent();
 
             string getThemesForTests = "GET_THEME_FOR_TEST ";
-            
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -75,7 +78,72 @@ namespace eLearning.UserContolsForAdmin
                 }
             }
         }
-           
+
+
+        private void DownloadTests_Click(object sender, RoutedEventArgs e)
+        {
+            const string EXPORT_TESTS_PROCEDURE_NAME = "Export_To_XML";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                try
+                {
+                    SqlCommand exportTestsCommand = new SqlCommand(EXPORT_TESTS_PROCEDURE_NAME, connection);
+                    exportTestsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    // Выполняем запрос и получаем объект для чтения из xml
+                    using (XmlReader xmlReader = exportTestsCommand.ExecuteXmlReader())
+                    {
+                        XDocument xml = XDocument.Load(xmlReader);
+
+                        const string EXPORT_FILE_NAME = "Tests.xml";
+
+                        // Сохраняем файл на рабочий стол
+                        xml.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/" + EXPORT_FILE_NAME);
+
+                        MessageBox.Show($"Файл {EXPORT_FILE_NAME} был успешно сохранен на рабочем столе");
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+            }
+        }
+
+        private void UploadTests_Click(object sender, RoutedEventArgs e)
+        {
+            const string IMPORT_FILE_NAME = "Tests.xml";
+            //const string IMPORT_ROOT = @"C:\Users\ASUS\Downloads\eLearningIco\";
+            const string IMPORT_ROOT = @"D:\Учёба\3 curs\DB\КП\";
+            const string IMPORT_TESTS_PROCEDURE_NAME = "Import_To_XML";
+
+            if (File.Exists(IMPORT_ROOT + IMPORT_FILE_NAME))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    try
+                    {
+                        SqlCommand importTestsCommand = new SqlCommand(IMPORT_TESTS_PROCEDURE_NAME, connection);
+                        importTestsCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        importTestsCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Данные из файла были успешно загружены");
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Убедитесь, что поместили свой файл '{IMPORT_FILE_NAME}' в папку: '{IMPORT_ROOT}'");
+            }
+        }
+
 
         private void NewTheme_Selected(object sender, RoutedEventArgs e)
         {
@@ -136,8 +204,8 @@ namespace eLearning.UserContolsForAdmin
                         }
                     }
                     readerTest.Close();
-                    
-                    if(!flagTheme)
+
+                    if (!flagTheme)
                     {
                         SelectedTest = txbTest.Text;
 
@@ -196,13 +264,13 @@ namespace eLearning.UserContolsForAdmin
         {
             listAnswerInDB = new List<Classes.Answer>();
             //если выбрал вопрос для которого буду создавать ответы
-            if(listQuestions.SelectedIndex != -1)
+            if (listQuestions.SelectedIndex != -1)
             {
-                if(txbAnswer1.Text != String.Empty && txbAnswer2.Text != String.Empty && txbAnswer3.Text != String.Empty)
+                if (txbAnswer1.Text != String.Empty && txbAnswer2.Text != String.Empty && txbAnswer3.Text != String.Empty)
                 {
                     if (txbAnswer1.Text == txbAnswer2.Text || txbAnswer1.Text == txbAnswer3.Text || txbAnswer2.Text == txbAnswer1.Text || txbAnswer2.Text == txbAnswer3.Text || txbAnswer3.Text == txbAnswer1.Text || txbAnswer3.Text == txbAnswer2.Text)
                     {
-                        MessageBox.Show("Ответы повторяются, измените!");                        
+                        MessageBox.Show("Ответы повторяются, измените!");
                     }
                     else
                     {
@@ -230,7 +298,7 @@ namespace eLearning.UserContolsForAdmin
                         txbAnswer3.Text = "";
                         MessageBox.Show("Можете приступать к сохранению!");
                     }
-                }               
+                }
                 else
                 {
                     MessageBox.Show("Введите все ответы!");
@@ -239,10 +307,10 @@ namespace eLearning.UserContolsForAdmin
             else
             {
                 MessageBox.Show("Выберите вопрос, для которого хотите создать ответы!");
-            }          
+            }
         }
 
-        
+
         int numberQuestion = 1;
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -290,10 +358,10 @@ namespace eLearning.UserContolsForAdmin
                             {
                                 connection.Open();
 
-                                
+
                                 SqlTransaction transaction = connection.BeginTransaction();//Транзакции 
                                 try
-                                {                                    
+                                {
                                     SqlCommand command = connection.CreateCommand();
                                     command.Transaction = transaction;
                                     command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -303,7 +371,7 @@ namespace eLearning.UserContolsForAdmin
 
 
                                     command.CommandText = "GET_THEME_FOR_TEST";
-                                    
+
                                     SqlDataReader readerTheme1 = command.ExecuteReader();
 
                                     if (readerTheme1.HasRows)
@@ -322,7 +390,7 @@ namespace eLearning.UserContolsForAdmin
                                     }
                                     readerTheme1.Close();
 
-                                    
+
                                     if (flagTheme)
                                         MessageBox.Show("К существующей теме добавляется информация!");
                                     else
@@ -330,7 +398,7 @@ namespace eLearning.UserContolsForAdmin
                                         MessageBox.Show("Выберите одну из тем");
                                         return;
                                     }
-                                    
+
                                     command.CommandText = "GET_TESTS_TEST";
                                     command.CommandType = System.Data.CommandType.StoredProcedure;
                                     SqlDataReader readerTest1 = command.ExecuteReader();
@@ -362,7 +430,7 @@ namespace eLearning.UserContolsForAdmin
                                         SqlCommand addTestsCommand = new SqlCommand("Add_TESTS", connection);
                                         addTestsCommand.Transaction = transaction;
                                         addTestsCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                                        
+
                                         // Передаем параметры и значения
                                         SqlParameter nameTestParameter = new SqlParameter
                                         {
@@ -416,7 +484,7 @@ namespace eLearning.UserContolsForAdmin
                                     readerTest2.Close();
 
                                     //--------------------------------------------------------------------------------------------------------------------------
-                                    
+
                                     SqlCommand getTestQuestionsCommand = new SqlCommand("GET_QUESTIONS", connection);
                                     getTestQuestionsCommand.Transaction = transaction;
                                     getTestQuestionsCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -452,7 +520,7 @@ namespace eLearning.UserContolsForAdmin
                                         SqlParameter testIdParameter = new SqlParameter
                                         {
                                             ParameterName = "@test_Id",
-                                            Value = (int) test.idTest
+                                            Value = (int)test.idTest
                                         };
 
                                         SqlParameter numberQuestionParameter = new SqlParameter
@@ -478,7 +546,7 @@ namespace eLearning.UserContolsForAdmin
                                         MessageBox.Show("Такой вопрос уже есть!");
                                         return;
                                     }
-                                    
+
                                     SqlDataReader readerQuestion2 = getTestQuestionsCommand.ExecuteReader();
 
                                     bool isQuestion = false;
@@ -500,10 +568,10 @@ namespace eLearning.UserContolsForAdmin
                                     readerQuestion2.Close();
 
                                     //--------------------------------------------------------------------------------------------------------------------------
-                                    
+
                                     if (isQuestion)
                                     {
-                                    
+
                                         SqlCommand addAnswerCommandOne = new SqlCommand("Add_ANSWER ", connection);
                                         addAnswerCommandOne.Transaction = transaction;
                                         addAnswerCommandOne.CommandType = System.Data.CommandType.StoredProcedure;
@@ -516,7 +584,7 @@ namespace eLearning.UserContolsForAdmin
 
                                         SqlParameter isRightParameter = new SqlParameter
                                         {
-                                            
+
                                             ParameterName = "@is_right",
                                             Value = 1
                                         };
@@ -537,11 +605,11 @@ namespace eLearning.UserContolsForAdmin
                                         isRightParameter.Value = 0;
 
                                         addAnswerCommandOne.ExecuteNonQuery();
-                                        
+
                                         answerParameter.Value = listAnswerInDB[2].SomeAnswer;
 
                                         addAnswerCommandOne.ExecuteNonQuery();
-                                        
+
                                         transaction.Commit();
 
                                     }
@@ -550,12 +618,12 @@ namespace eLearning.UserContolsForAdmin
                                     listQuestions.Items.Remove(listQuestions.SelectedItem);
 
                                 }
-                                catch(Exception ex)
+                                catch (Exception ex)
                                 {
                                     MessageBox.Show(ex.Message);
                                     transaction.Rollback();
                                 }
-                            
+
                             }
                             catch (Exception ex)
                             {
@@ -568,13 +636,13 @@ namespace eLearning.UserContolsForAdmin
                 {
                     MessageBox.Show("Все составляющие должны быть заполнены!");
                 }
-            
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void listTests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -594,7 +662,7 @@ namespace eLearning.UserContolsForAdmin
                 {
                     ParameterName = "@name_test",
                     Value = listTests.SelectedItem
-              
+
                 };
                 command.Parameters.Add(nameTestParameter);
 

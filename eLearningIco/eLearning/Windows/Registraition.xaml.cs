@@ -22,7 +22,7 @@ namespace eLearning.Windows
     /// </summary>
     public partial class Registraition : Window
     {
-        
+
         public Registraition()
         {
             InitializeComponent();
@@ -40,8 +40,8 @@ namespace eLearning.Windows
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             string connectionString = DataBase.data;
-           
-          
+
+
             string addUsers = "ADD_USERS";
             string getUsersProcedure = "GET_USERS";
 
@@ -65,7 +65,7 @@ namespace eLearning.Windows
                             return;
                         }
 
-                        
+
                         SqlCommand command2 = new SqlCommand(getUsersProcedure, connection);
                         command2.CommandType = System.Data.CommandType.StoredProcedure;
                         SqlDataReader reader = command2.ExecuteReader();
@@ -82,8 +82,8 @@ namespace eLearning.Windows
                                 }
                             }
                         }
-                        reader.Close();                     
-                       
+                        reader.Close();
+
 
                         if (!flagPerson)
                         {
@@ -96,7 +96,7 @@ namespace eLearning.Windows
                             SqlParameter loginParameter = new SqlParameter
                             {
                                 ParameterName = "@login",
-                                Value =txbLogin.Text
+                                Value = txbLogin.Text
                             };
 
                             SqlParameter passwordParameter = new SqlParameter

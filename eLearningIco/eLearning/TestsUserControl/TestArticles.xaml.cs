@@ -90,7 +90,8 @@ namespace eLearning.TestsUserControl
                     grid.Height = 170;
 
                     TextBlock txbNumberQuestion = new TextBlock();
-                    txbNumberQuestion.Text = createTests[i].NumberQuestion.ToString() + ".";
+                    //txbNumberQuestion.Text = createTests[i].NumberQuestion.ToString() + ".";
+                    txbNumberQuestion.Text = (i + 1).ToString() + ".";
                     txbNumberQuestion.FontSize = 30;
                     txbNumberQuestion.Margin = new Thickness(10, 20, 10, 20);
 
@@ -227,7 +228,6 @@ namespace eLearning.TestsUserControl
 
 
             int countRightAnswer = 0;
-
 
             foreach (Grid grid in stkPQuestion.Children)
             {
